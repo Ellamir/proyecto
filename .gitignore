@@ -20,9 +20,5 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-<<<<<<< HEAD
-=======
-README.md
 Ludoteca
->>>>>>> 4ee511c53c2f44a87d16e33541d16bbb3490a8dc
 src/config/firebaseConfig.js
