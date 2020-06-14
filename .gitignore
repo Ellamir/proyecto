@@ -1,0 +1,28 @@
+.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+<<<<<<< HEAD
+=======
+README.md
+Ludoteca
+>>>>>>> 4ee511c53c2f44a87d16e33541d16bbb3490a8dc
+src/config/firebaseConfig.js
