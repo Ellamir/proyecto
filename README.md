@@ -5,7 +5,8 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
 
 ## Administración de tareas
 
-[Flujo del proyecto](https://github.com/users/Ellamir/projects/1) :woman_technologist:[@Anasu](https://github.com/Anasu) :heavy_plus_sign: :woman_technologist:[@Ellamir](https://github.com/Ellamir) 
+[Flujo del proyecto](https://github.com/users/Ellamir/projects/1) 
+:woman_technologist:[@Anasu](https://github.com/Anasu) :heavy_plus_sign: :woman_technologist:[@Ellamir](https://github.com/Ellamir) 
 
 ## Requerimientos
 
@@ -16,9 +17,9 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
   
 - Requerimientos identificados
    - [ ]  1. La aplicación debe ser responsiva.
-  - [ ]   2. Se debe utilizar VueJS, Vuex y Vue router para el desarrollo
-  - [ ]   3. Utilizar una librería de componentes (Bootstrap-Vue)
-  - [ ]   4. Utilizar GIT para el control de versiones
+  - [x]   2. Se debe utilizar VueJS, Vuex y Vue router para el desarrollo
+  - [x]   3. Utilizar una librería de componentes (Bootstrap-Vue)
+  - [x]   4. Utilizar GIT para el control de versiones
    - [ ]  5. La aplicación deberá obtener los datos de los juegos desde la api 
         https://boardgamegeek.com/wiki/page/BGG_XML_API2# utilizando Fetch.
    - [ ]  6. La aplicación debe contar con un sistema de login basado en el servicio de 
