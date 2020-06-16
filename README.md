@@ -39,6 +39,12 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
 
 ![Borrador](https://www.dragon.cl/borrador.png)
 
+## Diseño Preliminar
+
+![Home](http://dragon.cl/portafolio/index.png)
+
+![Artboard](http://dragon.cl/portafolio/artboard.png)
+
 ## Utilidad
 
 La idea del sitio es una coleccion tipo ludoteca que tiene diferentes vistas para usuarios logueados y no logueados, 
