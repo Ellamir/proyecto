@@ -1,22 +1,29 @@
 <template>
-  <div class="bg-dark">
-        
-        fsfsf
+  <div class="footer">
+       <div id="franjalogin" class="morado">
+         <registro class="morado"></registro>
+         </div>
 
-        
+         <div class="oscuro">
+          
+          </div>
     </div>
 </template>
 
 <script>
+import Registro from "./Registro.vue"
+
 export default {
   name: 'Footer',
-  /* props: {
-    msg: String
-  } */
+  components: {
+    Registro
+  }
 }
 </script>
 
 
-<style lang="scss">
-// $bg-dark: #38006b
-</style>
+<style lang="scss" scoped>
+.oscuro{
+        background-color: #38006b;
+}
+</style> 
