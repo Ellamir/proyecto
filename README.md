@@ -5,9 +5,9 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
 
 ## Administración de tareas
 
-[Flujo del proyecto](https://github.com/users/Ellamir/projects/1)
- 
- 
+[Flujo del proyecto](https://github.com/users/Ellamir/projects/1) 
+:woman_technologist:[@Anasu](https://github.com/Anasu) :heavy_plus_sign: :woman_technologist:[@Ellamir](https://github.com/Ellamir) 
+
 ## Requerimientos
 
 - Objetivos (stakeholder y usuarios)
@@ -17,9 +17,9 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
   
 - Requerimientos identificados
    - [ ]  1. La aplicación debe ser responsiva.
-  - [ ]   2. Se debe utilizar VueJS, Vuex y Vue router para el desarrollo
-  - [ ]   3. Utilizar una librería de componentes (Bootstrap-Vue)
-  - [ ]   4. Utilizar GIT para el control de versiones
+  - [x]   2. Se debe utilizar VueJS, Vuex y Vue router para el desarrollo
+  - [x]   3. Utilizar una librería de componentes (Bootstrap-Vue)
+  - [x]   4. Utilizar GIT para el control de versiones
    - [ ]  5. La aplicación deberá obtener los datos de los juegos desde la api 
         https://boardgamegeek.com/wiki/page/BGG_XML_API2# utilizando Fetch.
    - [ ]  6. La aplicación debe contar con un sistema de login basado en el servicio de 
@@ -40,6 +40,12 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
 
 ![Borrador](https://www.dragon.cl/borrador.png)
 
+## Diseño Preliminar
+
+![Home](http://dragon.cl/portafolio/index.png)
+
+![Artboard](http://dragon.cl/portafolio/artboard.png)
+
 ## Utilidad
 
 La idea del sitio es una coleccion tipo ludoteca que tiene diferentes vistas para usuarios logueados y no logueados, 
@@ -56,7 +62,7 @@ USUARIOS
 - Nick
 - Imagen (avatar)
 - Edad (Fecha de nacimiento - debe haber un calculo para esto)
-- Grupo 
+- ~~Grupo~~ 
 - Contacto (email)
 
 Funcionalidad de LOGIN
@@ -69,7 +75,7 @@ LUDOTECA
 - Imagen
 - Editorial
 - palabras clave
-- Link a materiales (tal vez - y solo para usuarios) 
+- ~~Link a materiales~~ (tal vez - y solo para usuarios) 
 
 Funcionalidad de LUDOTECA
 - desplegar ludoteca completa
@@ -77,33 +83,7 @@ Funcionalidad de LUDOTECA
 - Mostrar las imagenes como libros en una repisa y al hacer click traer la info.
 - Despliegue podria depender de la cantidad de resultados, o tener un mouseover que vaya mostrando la imagen del libro dinamicamente. 
 
-=====
 
-EVENTOS
-- Indice
-- Fecha
-- Titulo
-- Imagen
-- Organizador (grupo)
-
-La funcionalidad para EVENTOS es: 
-- buscar ubicación (ciudad probablemente)
-- filtrar por fecha (año probablemente)
-- Paginar 
-
-----
-
-GRUPOS
-- Indice
-- Nombre grupo
-- Usuarios
-- Eventos 
-- Juegos
-
-Funcionalidad para GRUPOS:
-- Registrar grupo
-- Buscar grupo existente
-- Agregarse a un grupo
 
 ## Project setup
 ```
@@ -127,3 +107,33 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Desarrollo futuro :soon:
+##### (Fuera del alcance del proyecto original)
+>Elementos descartados de la entrega original han sido ~~tachados~~
+> 
+>EVENTOS
+>- Indice
+>- Fecha
+>- Titulo
+>- Imagen
+>- Organizador (grupo)
+>
+>La funcionalidad para EVENTOS es: 
+>- buscar ubicación (ciudad probablemente)
+>- filtrar por fecha (año probablemente)
+>- Paginar 
+>
+>----
+>
+>GRUPOS
+>- Indice
+>- Nombre grupo
+>- Usuarios
+>- Eventos 
+>- Juegos
+>
+>Funcionalidad para GRUPOS:
+>- Registrar grupo
+>- Buscar grupo existente
+>- Agregarse a un grupo
