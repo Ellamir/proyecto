@@ -12,9 +12,15 @@
 
       <!-- center aligned nav items -->
       <b-navbar-nav class="mx-auto">
-        <b-nav-form>
-          <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-          <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+        
+          <b-nav-form>
+       <b-input-group size="sm" class="mb-2">
+     
+      <b-form-input type="search" placeholder="Buscas un juego?"></b-form-input>
+       <b-input-group-append is-text>
+        <b-icon icon="search"></b-icon>
+      </b-input-group-append>
+    </b-input-group>
         </b-nav-form>
 
        
