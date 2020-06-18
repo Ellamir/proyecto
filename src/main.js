@@ -6,7 +6,6 @@ import store from './store/store';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css';
-//import 'bootstrap-vue/dist/css/bootstrap-vue.css';
 
 import firebase from 'firebase';
 import { firebaseConfig } from "./config/firebaseConfig";

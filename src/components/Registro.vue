@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mx-auto">
         <h1>Registro de nuevo usuario</h1>
         
         <label for="nombre">Ingrese un nombre de usuario: </label>

@@ -13,7 +13,17 @@ Vue.use(VueRouter)
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../components/Login.vue')
+  },
+  /*{
+    path: '/logout',
+    name: 'Logout',
+    component: () => import('../components/Logout.vue')
+  },*/
+  {
+    path: '/registro',
+    name: 'Registro',
+    component: () => import('../components/Registro.vue')
   }
 ]
 

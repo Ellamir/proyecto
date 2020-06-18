@@ -6,7 +6,8 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
 ## Administración de tareas
 
 [Flujo del proyecto](https://github.com/users/Ellamir/projects/1)
-
+ 
+ 
 ## Requerimientos
 
 - Objetivos (stakeholder y usuarios)

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Navegacion></Navegacion>
+      
+    <Navegacion2 v-if="usuario"></Navegacion2>
+    <Navegacion v-else></Navegacion>
+    
     <router-view/>
     <Footer></Footer>
   </div>
@@ -8,6 +11,7 @@
 
 <script>
 import Navegacion from './components/Navegacion.vue';
+import Navegacion2 from './components/Navegacion2.vue';
 import Footer from './components/Footer.vue';
 import firebase from 'firebase';
 
@@ -15,6 +19,7 @@ export default {
   name: 'App',
   components: {
     Navegacion, 
+    Navegacion2,
     Footer,
   },
   mounted() {
@@ -31,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss">
-/* no recuerdo como sobrescribir colores de bootstrap :(  */
+
 @import './node_modules/bootstrap/scss/bootstrap.scss';
 @import './node_modules/bootstrap-vue/src/index.scss';
 

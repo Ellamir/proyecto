@@ -13,10 +13,10 @@
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="email">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" v-model="password">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" v-model="password">
       </div>
-      <a @click="restablecer" href="#">Olvide la contraseña</a> | 
+      <a @click="restablecer" href="#">Olvidé la contraseña</a> | 
     <router-link to="/registro">Registrate</router-link>
       <button type="submit" class="btn btn-primary">Ingresar</button>
     </form>

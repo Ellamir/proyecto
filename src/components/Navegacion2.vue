@@ -20,8 +20,10 @@
        
       </b-navbar-nav>
  <b-navbar-nav>
-        <b-nav-item href="#"><router-link class="nav-link" to="/login">Login</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/registro">Registro</router-link></b-nav-item>
+         <b-nav-item href="#">
+            <router-link class="nav-link" to="/">Perfil</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" @click="salida" to="/login">Logout</router-link></b-nav-item>
+       <!-- <b-nav-item href="#"><router-link class="nav-link" to="/registro">Registro</router-link></b-nav-item>-->
       </b-navbar-nav>
 
     </b-collapse>
@@ -43,6 +45,9 @@ export default {
     }
   },
 }
+
+
+
 </script>
 
 <style lang="scss" scoped>
