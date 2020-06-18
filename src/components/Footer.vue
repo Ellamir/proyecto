@@ -1,9 +1,9 @@
 <template>
-  <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="bg-dark">
+        
         fsfsf
 
-        </nav>
+        
     </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
 }
 </script>
 
-<style>
 
+<style lang="scss">
+// $bg-dark: #38006b
 </style>

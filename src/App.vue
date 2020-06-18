@@ -1,18 +1,21 @@
 <template>
   <div>
-    <navegacion></navegacion>
+    <Navegacion></Navegacion>
     <router-view/>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Navegacion from './components/Navegacion.vue';
+import Footer from './components/Footer.vue';
 import firebase from 'firebase';
 
 export default {
   name: 'App',
   components: {
-    Navegacion
+    Navegacion, 
+    Footer,
   },
   mounted() {
     firebase.auth().onAuthStateChanged(user=>{
@@ -28,6 +31,12 @@ export default {
 </script>
 
 <style lang="scss">
+/* no recuerdo como sobrescribir colores de bootstrap :(  */
+@import './node_modules/bootstrap/scss/bootstrap.scss';
+@import './node_modules/bootstrap-vue/src/index.scss';
 
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+/*
+$morado-oscuro: #38006b
+$morado: 6a1b9a 
+*/
 </style>
