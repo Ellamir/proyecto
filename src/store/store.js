@@ -50,7 +50,18 @@ export default new Vuex.Store({
     },
     callDataToFeature(context)
     {
-      context.commit('dataToRandomFeature');
+      let callRandom = 'random=true';
+
+      const apiRes = async () => {
+        for(let i = 0; i < 4; i++) 
+        {
+          console.log('llamando a la api...');
+          const getRandom = await (await apiCall(callRandom)).data.game;
+          console.log('la data',getRandom);
+          context.commit('dataToRandomFeature',getRandom);
+        }
+      }
+      apiRes()
     }
   } 
 })
