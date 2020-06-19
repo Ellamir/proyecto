@@ -7,15 +7,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    randomHero:{},
+    randomHero: {
+      images: {
+        original: '',
+      }
+    },
     randomFeature: [],
     featuredQuantity: 4,
 
   },
   getters: {
-    showHero(state) 
+    showHeroIMG(state) 
     {
-      return state.randomHero;
+      return state.randomHero.images.original
     },
     showFeature(state)
     {
@@ -23,31 +27,26 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    dataToRandomHero(state) 
+    dataToRandomHero(state,random) 
     {
-      state.randomHero = {};
-      let apiRandom = random.game;
-      // hacer un fetch con promesa
-
-      state.randomHero = apiRandom;
+      state.randomHero = random;
     },
-    dataToRandomFeature(state) 
+    dataToRandomFeature(state,randomGame) 
     {
-      state.randomFeature = [];
-
-      for(let i = 0; i < state.featuredQuantity; i++) 
-      {
-        let apiRandom = random.game;
-        // fetch con promesa
-  
-        state.randomFeature.push(apiRandom);
-      }
+      state.randomFeature.push(randomGame);
     }
   },
   actions: {
     callDataToHero(context) 
     {
-      context.commit('dataToRandomHero');
+      let callRandom = 'random=true';
+
+      async function apiRes () {
+        console.log('llamando a la api...');
+        const getRandom = await (await apiCall(callRandom)).data.game;
+        context.commit('dataToRandomHero', getRandom);
+      }
+      apiRes()
     },
     callDataToFeature(context)
     {
