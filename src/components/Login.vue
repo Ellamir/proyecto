@@ -57,7 +57,7 @@ export default {
           this.userOk = 'Usuario correcto';
           setTimeout(()=>{
             this.userOk = '';
-            this.$router.push('/');
+            this.$router.push('/tam');  // esto debe cambiar por vista de perfil real 
           },3000);
           this.password = '';
           this.email = '';

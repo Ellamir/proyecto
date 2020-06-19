@@ -9,7 +9,7 @@
       <!-- Email (Auth) -->
       <!-- Aqui tambien podriamos poner una validación de si el usuario ya existe, avisar -->
           <b-form-group class="mx-auto" label-for="correo">
-                <b-form-input class="campo" id="email" v-model="correo" type="email" placeholder="Email"
+                <b-form-input class="campo" id="email" v-model="correo" placeholder="Email"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
     </b-form-row>
 
@@ -30,7 +30,7 @@
         <!-- Username (Perfil) -->
       
           <b-form-group class="mx-auto" label-for="userName">
-                <b-form-input class="campo" id="userName" v-model="userName" type="userName" placeholder="Nombre de usuario"
+                <b-form-input class="campo" id="userName" v-model="userName" placeholder="Nombre de usuario"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
 
     </b-form-row>

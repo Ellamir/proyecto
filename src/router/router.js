@@ -25,6 +25,11 @@ Vue.use(VueRouter)
     name: 'Ana',
     component: () => import('../views/Ana.vue')
   },
+  {
+    path: '/tam',
+     name: 'Tam',
+     component: () => import('../views/Tam.vue')
+   },
   // {
   //   path: '/registro',
   //   name: 'Registro',
