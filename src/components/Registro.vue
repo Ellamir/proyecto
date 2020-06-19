@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+// import firebase from 'firebase';
 export default {
     name: 'Registro',
     data() {
@@ -29,7 +29,7 @@ export default {
         }
     },
     methods: {
-        userRegister(){
+        /* userRegister(){
             if (this.userName && this.correo && this.clave){
                 firebase.auth().createUserWithEmailAndPassword(this.correo, this.clave).then(response=>{
                     console.log(response.user)
@@ -45,7 +45,7 @@ export default {
             }else{
                 alert("Ingrese un correo y una contraseña");
             }
-        }
+        } */
     },
 }
 </script>
