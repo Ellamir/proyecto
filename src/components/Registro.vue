@@ -1,19 +1,23 @@
 
 
 <template>
-<div class="mx-auto pt-5">
+<div class="mx-auto pt-5 pb-5"> 
+    <!-- Necesito ayuda para centrar este titulo.-->
+     <!-- No lleva color aquí sino que en la vista/componente que lo contiene -->
+    <div class="mx-auto" style="width: 330px;"><h1>Sign up for more!</h1></div>
   <b-container fluid>
     <b-form-row>
+        
       <!-- Email (Auth) -->
       <!-- Aqui tambien podriamos poner una validación de si el usuario ya existe, avisar -->
-          <!-- <b-form-group class="mx-auto" label-for="email" description="Tu correo electrónico"> -->
+          <b-form-group class="mx-auto" label-for="email">
                 <b-form-input class="campo" id="email" v-model="correo" type="email" placeholder="Email"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
     </b-form-row>
 
       <!-- Password (Auth) -->
     <b-form-row>
-        <!-- <b-form-group class="mx-auto" label-for="email" description="Contraseña de al menos 6 caracteres"> -->
+        <b-form-group class="mx-auto" label-for="email">
         <b-form-input class="campo" id="clave" v-model="clave" :state="nameState"
           aria-describedby="input-live-help input-live-feedback" placeholder="Contraseña"
           trim>  </b-form-input> </b-form-group>
@@ -27,17 +31,28 @@
 
         <!-- Username (Perfil) -->
       
-          <!-- <b-form-group class="mx-auto" label-for="userName" description="El nombre que será visible en este sitio"> -->
-            <b-form-input class="campo" id="userName" v-model="userName" type="userName" placeholder="Nombre de usuario"
+          <b-form-group class="mx-auto" label-for="userName">
+                <b-form-input class="campo" id="userName" v-model="userName" type="userName" placeholder="Nombre de usuario"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
 
     </b-form-row>
 
     <!-- botones del final --> 
     <b-form-row>
-     <a href=# @click="userRegister">Registrar</a> | 
+       
+      <div class="mx-auto" style="width: 350px">
+         <b-form inline> 
+<b-form-checkbox class="mr-auto mb-2 mr-sm-2 mb-sm-0">Accept terms</b-form-checkbox>
+
+    <b-button class="ml-auto boton1">Sign up!</b-button>
+  </b-form>
+
+    </div>
         
-    <router-link to="/login">Si ya estás registrado, puedes ingresar al sitio</router-link>
+    <!-- <router-link to="/login" class="mx-auto mejorlogin">Si ya estás registrado, 
+    puedes ingresar al sitio</router-link> -->
+      
+    
     </b-form-row>
   </b-container>
 </div>
@@ -90,12 +105,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
 .campo{
         width: 350px;
 }
 .mini {
         text-align: center;
         width: 380px;
-        text:#FFF;
+        
 }
+
+.boton1 {
+    color:#FFF;
+    background:#EC8E4C;
+    }
+    .boton1:hover {
+    color:#FFF;
+    background:#e9772c;
+    // este no es el color correcto, hay q arreglarlo
+    }
 </style>

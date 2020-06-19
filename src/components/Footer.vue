@@ -1,11 +1,19 @@
 <template>
   <div class="footer">
-       <div id="franjalogin" class="morado">
+       <div id="franjalogin" class="morado text-white">
          <registro class="mx-auto"></registro>
          </div>
 
-         <div class="oscuro">
-          
+         <div pt-5 pb-5 class="oscuro text-white">
+           <br>
+           <b-container pt-5 pb-5>
+           <b-row  align-v="center">
+    <b-col mx-auto align-self="start" class="text-center" pt-5 pb-5 sm>&copy; Ellamir &amp; Anasu 2020<br></b-col>
+    <b-col align-self="center" mx-auto class="text-center" pt-5 pb-5 sm>Encuéntranos en RRSS <br></b-col>
+    <b-col align-self="end" mx-auto class="text-center" pt-5 pb-5 sm>Terms &amp; Conditions</b-col>
+  </b-row>
+</b-container>
+<br>
           </div>
     </div>
 </template>
@@ -30,5 +38,9 @@ export default {
 .morado{
         background-color: #6a1b9a;
         text: #FFF;
+        
 }
+.mejorlogin {
+          text: #FFF;
+        }
 </style> 
