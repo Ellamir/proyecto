@@ -37,10 +37,10 @@ export default {
 
 .morado{
         background-color: #6a1b9a;
-        text: #FFF;
+        text-decoration-color: #FFF;
         
 }
 .mejorlogin {
-          text: #FFF;
+          text-decoration-color: #FFF;
         }
 </style> 
