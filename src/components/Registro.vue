@@ -1,34 +1,74 @@
+
+
 <template>
-  <div class="mx-auto">
-        <h1>Registro de nuevo usuario</h1>
+<div class="mx-auto">
+  <b-container>
+    <b-row class="my-2" sm="9">
+      <!-- Email (Auth) -->
+      <!-- Aqui tambien podriamos poner una validación de si el usuario ya existe, avisar -->
+          <b-form-group class="mx-auto" label-for="email" description="Tu correo electrónico">
+                <b-form-input class="campo" id="email" v-model="correo" type="email" placeholder="Email"
+                lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
+      </b-row>
+
+      <!-- Password (Auth) -->
+<b-row class="my-2" sm="9">
+    <b-form-group class="mb-0" label-for="email" description="Contraseña de al menos 6 caracteres">
+        <b-form-input class="campo" id="clave" v-model="clave" :state="nameState"
+      aria-describedby="input-live-help input-live-feedback" placeholder="Contraseña"
+      trim>  </b-form-input> </b-form-group>
+
+    
+    <b-form-invalid-feedback id="input-live-feedback">
+      Enter at least 3 letters  <!-- se supone q esto se ve si no se cumple la condicion -->
+    </b-form-invalid-feedback>
+
+    
+</b-row>
+
+<b-row class="my-1" sm="9">
+
+        <!-- Username (Perfil) -->
+      
+          <b-form-group class="mb-0" label-for="userName" description="El nombre que será visible en este sitio">
+                <b-form-input class="campo" id="userName" v-model="userName" type="userName" placeholder="Nombre de usuario"
+                lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
+
+</b-row>
+
+<!-- botones del final --> 
+     <a href=# @click="userRegister">Registrar</a> | 
         
-        <label for="nombre">Ingrese un nombre de usuario: </label>
-        <input type="text" v-model="userName" placeholder="Ingrese su nombre"><br>
-        
-        <label for="email">Ingrese el correo electrónico: </label>
-        <input type="email" v-model="correo" placeholder="Ingrese su correo"><br>
-        
-        <label for="clave">Ingrese la contraseña: </label>
-        <input type="password" v-model="clave" placeholder="Ingrese clave elegida"><br>
-        
-        <button @click="userRegister">Registrar</button>
-        <br>
-        <router-link to="/login">Login</router-link>
-  </div>
+        <router-link to="/login">Si ya estás registrado, puedes ingresar al sitio</router-link>
+  </b-container>
+
+  </center>
 </template>
 
 <script>
 // import firebase from 'firebase';
 export default {
+    computed: {   
+      nameState() {   // esto no está funcionando por ahora no se pq
+        return this.clave.length > 3 ? true : false
+      }
+    },
     name: 'Registro',
     data() {
         return {
-            correo: '',
-            clave: '',
-            userName: ''
-        }
+        email: '',
+        clave: '',
+        userName: '',
+      }
     },
+   
     methods: {
+        // cambia valor ingresado a todo minusculas
+        formatter(value) {
+        return value.toLowerCase()
+        },
+
+
         /* userRegister(){
             if (this.userName && this.correo && this.clave){
                 firebase.auth().createUserWithEmailAndPassword(this.correo, this.clave).then(response=>{
@@ -49,3 +89,13 @@ export default {
     },
 }
 </script>
+
+<style lang="scss" scoped>
+.campo{
+        width: 350px;
+}
+.bloque-login {
+        text-align: center;
+        width: 380px;
+}
+</style>

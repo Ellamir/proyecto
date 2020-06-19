@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
        <div id="franjalogin" class="morado">
-         <registro class="morado"></registro>
+         <registro class="mx-auto"></registro>
          </div>
 
          <div class="oscuro">
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Registro from "./Registro.vue"
+import Registro from "./Registro.vue"  // componente hijo
 
 export default {
   name: 'Footer',
@@ -25,5 +25,9 @@ export default {
 <style lang="scss" scoped>
 .oscuro{
         background-color: #38006b;
+}
+
+.morado{
+        background-color: #a239ff;
 }
 </style> 
