@@ -12,7 +12,7 @@
         >
         <!-- Text slides with image -->
             <b-carousel-slide
-                :img-src="randomGame.images.original"
+                :img-src="showHeroIMG"
                 class="heroSlide"
             >
             </b-carousel-slide>
@@ -29,7 +29,6 @@ export default {
       return {
         randomGame: {},
         slide: 0,
-
       }
     },
     methods: {
@@ -44,13 +43,12 @@ export default {
     },
     computed: {
         ...mapGetters([
-          'showHero'
+          'showHeroIMG'
         ])
     },
     beforeMount: function () {
+      console.log('la imagen',this.showHeroIMG)
       this.$store.dispatch('callDataToHero');
-      this.randomGame = this.$store.getters.showHero;
-      console.log(`this is the random Game:`, this.randomGame);
 
     }
   }
