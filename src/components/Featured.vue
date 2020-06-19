@@ -1,5 +1,7 @@
+<template>
     <div class="container my-5">
         <h2>Featured</h2>
+        <b-card-group deck>
             <b-card v-for="(item, index) in gameArray" :key="index"
                 :title="item.name"
                 :img-src="item.image_url"
@@ -10,6 +12,7 @@
                 Publisher: {{ item.publisher }}, {{ item.year_published }} 
                 </b-card-text>
             </b-card>
+        </b-card-group> 
     </div>
 </template>
 
