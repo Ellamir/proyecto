@@ -1,48 +1,47 @@
 
 
 <template>
-<div class="mx-auto">
-  <b-container>
-    <b-row class="my-2" sm="9">
+<div class="mx-auto pt-5">
+  <b-container fluid>
+    <b-form-row>
       <!-- Email (Auth) -->
       <!-- Aqui tambien podriamos poner una validación de si el usuario ya existe, avisar -->
-          <b-form-group class="mx-auto" label-for="email" description="Tu correo electrónico">
+          <!-- <b-form-group class="mx-auto" label-for="email" description="Tu correo electrónico"> -->
                 <b-form-input class="campo" id="email" v-model="correo" type="email" placeholder="Email"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
-      </b-row>
+    </b-form-row>
 
       <!-- Password (Auth) -->
-<b-row class="my-2" sm="9">
-    <b-form-group class="mb-0" label-for="email" description="Contraseña de al menos 6 caracteres">
+    <b-form-row>
+        <!-- <b-form-group class="mx-auto" label-for="email" description="Contraseña de al menos 6 caracteres"> -->
         <b-form-input class="campo" id="clave" v-model="clave" :state="nameState"
-      aria-describedby="input-live-help input-live-feedback" placeholder="Contraseña"
-      trim>  </b-form-input> </b-form-group>
+          aria-describedby="input-live-help input-live-feedback" placeholder="Contraseña"
+          trim>  </b-form-input> </b-form-group>
 
-    
-    <b-form-invalid-feedback id="input-live-feedback">
-      Enter at least 3 letters  <!-- se supone q esto se ve si no se cumple la condicion -->
-    </b-form-invalid-feedback>
+        <b-form-invalid-feedback id="input-live-feedback">
+        Enter at least 3 letters  <!-- se supone q esto se ve si no se cumple la condicion -->
+        </b-form-invalid-feedback>
+    </b-form-row>
 
-    
-</b-row>
-
-<b-row class="my-1" sm="9">
+    <b-form-row>
 
         <!-- Username (Perfil) -->
       
-          <b-form-group class="mb-0" label-for="userName" description="El nombre que será visible en este sitio">
-                <b-form-input class="campo" id="userName" v-model="userName" type="userName" placeholder="Nombre de usuario"
+          <!-- <b-form-group class="mx-auto" label-for="userName" description="El nombre que será visible en este sitio"> -->
+            <b-form-input class="campo" id="userName" v-model="userName" type="userName" placeholder="Nombre de usuario"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
 
-</b-row>
+    </b-form-row>
 
-<!-- botones del final --> 
+    <!-- botones del final --> 
+    <b-form-row>
      <a href=# @click="userRegister">Registrar</a> | 
         
-        <router-link to="/login">Si ya estás registrado, puedes ingresar al sitio</router-link>
+    <router-link to="/login">Si ya estás registrado, puedes ingresar al sitio</router-link>
+    </b-form-row>
   </b-container>
+</div>
 
-  </center>
 </template>
 
 <script>
@@ -94,8 +93,9 @@ export default {
 .campo{
         width: 350px;
 }
-.bloque-login {
+.mini {
         text-align: center;
         width: 380px;
+        text:#FFF;
 }
 </style>

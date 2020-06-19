@@ -28,6 +28,7 @@ export default {
 }
 
 .morado{
-        background-color: #a239ff;
+        background-color: #6a1b9a;
+        text: #FFF;
 }
 </style> 
