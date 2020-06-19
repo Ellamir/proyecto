@@ -5,7 +5,7 @@
     <Navegacion></Navegacion>
     
     <router-view/>
-    <Coleccion></Coleccion>
+    <!-- <Coleccion></Coleccion> -->
     <Footer></Footer>
   </div>
 </template>
@@ -13,7 +13,7 @@
 <script>
 import Navegacion from './components/Navegacion.vue';
 // import Navegacion2 from './components/Navegacion2.vue';
-import Coleccion from './components/Coleccion.vue';
+// import Coleccion from './components/Coleccion.vue';
 import Footer from './components/Footer.vue';
 // import firebase from 'firebase';
 
@@ -22,7 +22,7 @@ export default {
   components: {
     Navegacion, 
     // Navegacion2,
-    Coleccion,
+    // Coleccion,
     Footer,
   },
   mounted() {
