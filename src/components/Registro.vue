@@ -35,6 +35,8 @@
 
     </b-form-row>
 
+
+
     <!-- botones del final --> 
     <b-form-row>
        
@@ -118,11 +120,11 @@ export default {
 
 .boton1 {
     color:#FFF;
-    background:#EC8E4C;
+    background:#FFA040;
     }
     .boton1:hover {
     color:#FFF;
-    background:#e9772c;
-    // este no es el color correcto, hay q arreglarlo
+    background:#EC8E4C;
+    
     }
 </style>
