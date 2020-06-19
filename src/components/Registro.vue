@@ -64,9 +64,9 @@
 export default {
     name: 'Registro',
 
-    computed: {   
-      nameState() {   // esto no está funcionando por ahora no se pq
-        return this.clave.length > 3 ? true : false
+    watch: {   
+      clave() {   // esto no está funcionando por ahora no se pq
+        this.nameState = this.clave.length > 5 ? true : false
       }
     },
     
@@ -75,6 +75,7 @@ export default {
         email: '',
         clave: '',
         userName: '',
+        nameState: null, 
       }
     },
    
@@ -95,6 +96,7 @@ export default {
                         this.correo = '';
                         this.userName = '';
                         this.clave = '';
+                        this.nameState = null;
                         this.$router.push('/');
                     })
                 }).catch(error => console.error(error))
