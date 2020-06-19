@@ -13,7 +13,7 @@
 
 <script>
 import Navegacion from './components/Navegacion.vue';
-// import Navegacion2 from './components/Navegacion2.vue';
+import Navegacion2 from './components/Navegacion2.vue';
 import Footer from './components/Footer.vue';
 import firebase from 'firebase';
 
@@ -21,7 +21,7 @@ export default {
   name: 'App',
   components: {
     Navegacion, 
-    // Navegacion2,
+    Navegacion2,
     // Coleccion,
     Footer,
   },

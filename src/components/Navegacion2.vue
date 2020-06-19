@@ -12,7 +12,10 @@
 
       <!-- center aligned nav items -->
       <b-navbar-nav class="mx-auto">
-         <b-nav-form>
+        
+BIENVENIDO, USUARIO REGISTRADO
+
+          <!-- <b-nav-form>
        <b-input-group size="sm" class="mb-2">
      
       <b-form-input type="search" placeholder="Buscas un juego?"></b-form-input>
@@ -20,16 +23,17 @@
         <b-icon icon="search"></b-icon>
       </b-input-group-append>
     </b-input-group>
-        </b-nav-form>
+        </b-nav-form> -->
 
        
       </b-navbar-nav>
- <b-navbar-nav>
-         <b-nav-item href="#">
-           <!-- <b-nav-item href="#"><router-link class="nav-link" to="/access">User Access</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item> -->
+      <b-navbar-nav>
+        <b-nav-item href="#"><router-link class="nav-link" to="/access">User Access</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/tam">PERFIL</router-link></b-nav-item>
         <b-nav-item href="#"><router-link class="nav-link" @click="salida" to="/">Logout</router-link></b-nav-item>
-          </b-navbar-nav>
+
+      </b-navbar-nav>
 
     </b-collapse>
   </b-navbar>
