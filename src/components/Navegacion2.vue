@@ -2,7 +2,7 @@
 <div>
   <b-navbar toggleable="lg" type="dark" class="oscuro">
     <b-navbar-brand href="#">
-      <router-link class="b-navbar-brand" to="/">Ludoteca</router-link>
+      <router-link class="b-navbar-brand" to="/"><b-img src="http://dragon.cl/portafolio/ludoteca.png"></b-img></router-link>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

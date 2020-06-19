@@ -1,8 +1,9 @@
 <template>
   <div>
       
-    <!-- <Navegacion2 v-if="usuario"></Navegacion2> -->
+    <!-- <Navegacion2></Navegacion2> -->
     <Navegacion></Navegacion>
+    
     
     <router-view/>
     <Footer></Footer>

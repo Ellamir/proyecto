@@ -2,7 +2,7 @@
 <div>
   <b-navbar toggleable="lg" type="dark" class="oscuro">
     <b-navbar-brand href="#">
-      <router-link class="b-navbar-brand" to="/">Ludoteca</router-link>
+      <router-link class="b-navbar-brand" to="/"><b-img src="http://dragon.cl/portafolio/ludoteca.png"></b-img></router-link>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -25,9 +25,9 @@
 
        
       </b-navbar-nav>
- <b-navbar-nav>
-        <b-nav-item href="#"><router-link class="nav-link" to="/login">Login</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/registro">Registro</router-link></b-nav-item>
+      <b-navbar-nav>
+        <b-nav-item href="#"><router-link class="nav-link" to="/access">User Access</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
       </b-navbar-nav>
 
     </b-collapse>
