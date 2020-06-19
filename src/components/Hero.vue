@@ -14,11 +14,13 @@
             @sliding-end="onSlideEnd"
         >
         <!-- Text slides with image -->
-        <b-carousel-slide
-            caption="First slide"
-            text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-            img-src="https://picsum.photos/1024/480/?image=52"
-        ></b-carousel-slide>
+        <div>
+            <b-carousel-slide
+                caption="First slide"
+                text="Nulla vitae elit libero, a pharetra augue mollis interdum."
+                img-src="https://picsum.photos/1024/480/?image=52"
+            ></b-carousel-slide>
+        </div>
 
         <!-- Slides with custom text -->
         <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
@@ -76,8 +78,10 @@ export default {
       onSlideEnd(slide) {
         this.sliding = false;
         console.log(slide) //para que el eslinter no joda
-      }
+      },
+    },
+    computed: {
+        
     }
-   
   }
 </script>

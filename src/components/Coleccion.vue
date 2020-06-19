@@ -9,19 +9,19 @@
           <th>Id</th>
           <th>Avatar</th>
           <th>Nombre</th>
-          <th>Apellido</th>
+         <!--  <th>Apellido</th>
           <th>Correo</th>
-          <th>Favorito</th>
+          <th>Favorito</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(persona,index) in datosFavoritos" :key="index" :class="{seleccionado: persona.favorito}">
-          <td>{{persona.id}}</td>
-          <td><img :src="persona.avatar" :alt="index" class="avatar"></td>
-          <td>{{persona.first_name}}</td>
-          <td>{{persona.last_name}}</td>
-          <td>{{persona.email}}</td>
-          <td>{{persona.favorito}}</td>
+        <tr v-for="(juego,index) in datosFavoritos" :key="index" :class="{seleccionado: juego.favorito}">
+          <td>{{juego.id}}</td>
+          <td><img :src="juego.image_url" :alt="index" class="avatar"></td>
+          <td>{{juego.name}}</td>
+         <!--  <td>{{juego.name}}</td>
+          <td>{{juego.name}}</td>
+          <td>{{juego.name}}</td> -->
         </tr>
       </tbody>
     </table>
@@ -29,35 +29,36 @@
 </template>
 
 <script>
-import { db } from "../main";
+import { api } from "../dbDummy";
 export default {
   name: 'Favorito',
   data() {
     return {
       busqueda: '',
-      datosFavoritos: []
+      datosFavoritos: api.games,
     }
   },
   mounted() {
-      if (this.$store.state.uidUser) {
-          db.collection(this.$store.state.uidUser).get().then(resp=>{
+      /* if (this.$store.state.uidUser) {
+          // esto va a cambiar
+          api.collection(this.$store.state.uidUser).get().then(resp=>{
               var aux = [];
               resp.forEach(elemt=>{
                   aux.push({
                     id: elemt.data().id,
-                    last_name: elemt.data().last_name,
+                    name: elemt.data().name,
                     first_name: elemt.data().first_name,
                     avatar: elemt.data().avatar,
                     email: elemt.data().email,
                     idDoc: elemt.id,
-                    favorito: elemt.data().favorito
+                    favorito: elemt.data().favorito 
                   })
               });
               this.datosFavoritos = aux;
           })
       }else{
-          this.router.push('/login');
-      }
+          this.$router.push('/login');
+      } */
   },
 }
 </script>

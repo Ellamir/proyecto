@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+// import firebase from 'firebase';
 export default {
   name: 'Login',
   data() {
@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    ingresar(){
+    /* ingresar(){
       if (!this.email && !this.password) {
         this.error = 'Debe ingresar los datos del usuario';
       } else if(this.password.length < 6){
@@ -78,7 +78,7 @@ export default {
       }else {
         alert("Para recuperar contraseña ingrese un correo valido");
       }
-    } 
+    }  */
   }
 }
 </script>
