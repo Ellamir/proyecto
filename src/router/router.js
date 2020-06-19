@@ -11,20 +11,25 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: () => import('../components/Login.vue')
+    path: '/access',
+    name: 'Access',
+    component: () => import('../views/Access.vue')
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: () => import('../views/Signup.vue')
   },
   {
    path: '/ana',
     name: 'Ana',
     component: () => import('../views/Ana.vue')
   },
-  {
-    path: '/registro',
-    name: 'Registro',
-    component: () => import('../components/Registro.vue')
-  }
+  // {
+  //   path: '/registro',
+  //   name: 'Registro',
+  //   component: () => import('../components/Registro.vue')
+  // }
 ]
 
 const router = new VueRouter({

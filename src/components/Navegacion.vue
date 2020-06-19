@@ -26,8 +26,8 @@
        
       </b-navbar-nav>
       <b-navbar-nav>
-        <b-nav-item href="#"><router-link class="nav-link" to="/login">Login</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/registro">Registro</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/access">User Access</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
       </b-navbar-nav>
 
     </b-collapse>

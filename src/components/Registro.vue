@@ -1,5 +1,3 @@
-
-
 <template>
 <div class="mx-auto pt-5 pb-5"> 
     <!-- Necesito ayuda para centrar este titulo.-->
@@ -44,7 +42,7 @@
          <b-form inline> 
 <b-form-checkbox class="mr-auto mb-2 mr-sm-2 mb-sm-0">Accept terms</b-form-checkbox>
 
-    <b-button class="ml-auto boton1">Sign up!</b-button>
+    <b-button @click="signup" class="ml-auto boton1">Sign up!</b-button> <!--on click no hace nada-->
   </b-form>
 
     </div>
@@ -62,12 +60,14 @@
 <script>
 // import firebase from 'firebase';
 export default {
+    name: 'Registro',
+
     computed: {   
       nameState() {   // esto no está funcionando por ahora no se pq
         return this.clave.length > 3 ? true : false
       }
     },
-    name: 'Registro',
+    
     data() {
         return {
         email: '',

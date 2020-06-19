@@ -1,7 +1,7 @@
-<template>
-  <div class="container">
+<template><!-- Me falta mejorar este form a BSV -->
+  <!-- <div class="container">  
     <h1 class="text-center">Login</h1>
-    <form @submit.prevent="ingresar">
+    <b-form-group class="mx-auto" @submit.prevent="ingresar">
       <div class="alert alert-danger" role="alert" v-if="error">
         {{error}}
       </div>
@@ -13,13 +13,38 @@
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="email">
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Password</label> <a @click="restablecer" href="#">¿Olvidaste la contraseña?</a> 
         <input type="password" class="form-control" id="password" v-model="password">
+      </div> <router-link to="/registro">Registrate</router-link> -->  
+      <div class="mx-auto" pb-5 style="width: 350px">
+   <br>   
+<div ml-5 pb-3><h1>Log in to access your profile</h1></div>
+<br>
+<b-form>
+    <label class="sr-only" for="email">Email</label>
+    <b-input-group prepend="@" class="mb-2 mr-sm-2 mb-sm-0 pb-3">
+    <b-input id="email" placeholder="Nombre"></b-input> 
+    </b-input-group>
+
+    <label class="sr-only" for="inline-form-input-username">Password</label>
+    <b-input-group prepend="? " class="mb-2 mr-sm-2 mb-sm-0 pb-3">
+      <b-input id="password" placeholder="Password"></b-input>
+    </b-input-group>
+
+      <div class="mx-auto" pb-5 style="width: 350px">
+      <b-button @click="signin" mx-auto class="boton1">Ingresar con tu usuario</b-button> <!--on click no hace nada-->
       </div>
-      <a @click="restablecer" href="#">Olvidé la contraseña</a> | 
-    <router-link to="/registro">Registrate</router-link>
-      <button type="submit" class="btn btn-primary">Ingresar</button>
-    </form>
+    </b-form>
+
+<!-- mensajes instantaneos -->
+
+      <div class="alert alert-danger" role="alert" v-if="error">
+        {{error}}
+      </div>
+      <div class="alert alert-success" role="alert" v-if="userOk">
+        {{userOk}}
+      </div>
+
   </div>
 </template>
 
@@ -82,3 +107,26 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+h1{
+  text-align: center;
+}
+.login {
+          text-decoration-color: #000;
+        }
+
+.boton1 {
+    color:#FFF;
+    background:#EC8E4C;
+    align-self: center;
+    margin-bottom: 50px;
+    margin-left: 90px;
+    }
+    .boton1:hover {
+    color:#FFF;
+    background:#e9772c;
+    // este no es el color correcto, hay q arreglarlo
+    }
+</style> 
