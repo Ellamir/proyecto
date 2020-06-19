@@ -37,17 +37,17 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 export default {
   name: 'Navegacion',
   methods: {
-    salida(){
+    /* salida(){
       firebase.auth().signOut().then(()=>{
         console.log("salida de usuario")
         this.$router.push('/login');
       })
-    }
+    } */
   },
 }
 

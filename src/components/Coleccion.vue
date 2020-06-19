@@ -39,7 +39,7 @@ export default {
     }
   },
   mounted() {
-      if (this.$store.state.uidUser) {
+      /* if (this.$store.state.uidUser) {
           // esto va a cambiar
           api.collection(this.$store.state.uidUser).get().then(resp=>{
               var aux = [];
@@ -47,18 +47,18 @@ export default {
                   aux.push({
                     id: elemt.data().id,
                     name: elemt.data().name,
-                    /* first_name: elemt.data().first_name,
+                    first_name: elemt.data().first_name,
                     avatar: elemt.data().avatar,
                     email: elemt.data().email,
                     idDoc: elemt.id,
-                    favorito: elemt.data().favorito */
+                    favorito: elemt.data().favorito 
                   })
               });
               this.datosFavoritos = aux;
           })
       }else{
           this.$router.push('/login');
-      }
+      } */
   },
 }
 </script>
