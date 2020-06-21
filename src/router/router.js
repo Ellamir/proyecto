@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+//import firebase from 'firebase';   cuando le active la opcion o sino habra q reemplazar por vuex para usar state
 
 Vue.use(VueRouter)
 
@@ -27,14 +28,18 @@ Vue.use(VueRouter)
   },
   {
     path: '/tam',
-     name: 'Tam',
-     component: () => import('../views/Tam.vue')
-   },
-  // {
-  //   path: '/registro',
-  //   name: 'Registro',
-  //   component: () => import('../components/Registro.vue')
-  // }
+    name: 'Tam',
+    component: () => import('../views/Tam.vue'),
+  },
+
+  //  {                               Así deberia ser el flujo al apretar el perfil de usuario pero no funca
+  //   path: '/perfil',
+  //    component: () => import('../views/Perfil.vue'),
+  //    beforeEnter: (to, from, next) => {
+  //     if (firebase.auth().currentUser) next({ name: 'Perfil' })
+  //     else next({ name: 'Access' })
+  //    }
+  //  },
 ]
 
 const router = new VueRouter({

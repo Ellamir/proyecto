@@ -4,7 +4,11 @@
         
         <p @click="saludo"> Saludar en el console log </p>
         <h1 class="hola" v-html="hola"></h1>
-        <img :src="gravatarURL" alt="algo">
+        <img :src="gravatarURL" alt="algo"/>
+        <br><br>
+        <b-avatar :src="gravatarURL" />  
+        <br><br>
+        <b-avatar :src="gravatarURL" rounded style="font-size: 4rem;"></b-avatar> <!-- que venga de firebase-->
         </div>
     </div>
     
