@@ -17,7 +17,10 @@
     </b-input-group>
 
       <div class="mx-auto" pb-5 style="width: 350px">
-        <b-button mx-auto @click.prevent="ingresar" class="boton1">Ingresar con tu usuario</b-button> 
+         <b-button mx-auto @click.prevent="ingresar" class="boton1">Ingresar con tu usuario</b-button>
+
+         <p id="recordatorio" class="recordatorio"><a @click="restablecer" class="recordatorio" href="#">Pincha aquí para restablecer la contraseña</a></p> 
+        
        
      </div>
     </b-form>
@@ -48,17 +51,17 @@ export default {
   },
   methods: {
      ingresar(){
-      if (!this.email && !this.password) {
-        this.error = 'Debe ingresar los datos del usuario';
-      } else if(this.password.length < 6){
-        this.error = 'La contraseña debe ser mayor a 6 digitos'
+      if (!this.email || !this.password) {
+        this.error = 'Debe ingresar su email y contraseña';
+      } else if(this.password.length < 5){
+        this.error = 'La contraseña debe ser mayor a 5 digitos'
       }else {
         firebase.auth().signInWithEmailAndPassword(this.email,this.password).then(()=>{
           this.userOk = 'Usuario correcto';
           setTimeout(()=>{
             this.userOk = '';
-            this.$router.push('/tam');
-          },3000);
+            this.$router.push('/tam');    // pasa a vista de usuario
+          },1000);
           this.password = '';
           this.email = '';
           this.error = '';
@@ -67,8 +70,11 @@ export default {
           console.error(error);
           if (error.code == 'auth/user-not-found'){
             alert("El usuario no existe en nuestra base de datos");
+          }else if(error.code == 'auth/invalid-email'){
+            alert("Ingrese un correo valido");
+            
           }else if(error.code == 'auth/wrong-password'){
-            alert("La contraseña no es válida o el usuario no tiene una contraseña.");
+            alert("La contraseña no es válida.\n Puedes solicitar una nueva a tu email \n pinchando en 'Restablecer contraseña'");
           }else {
             alert(error.message);
           }
@@ -79,15 +85,21 @@ export default {
     restablecer(){
       if (this.email){
         firebase.auth().sendPasswordResetEmail(this.email).then(function() {
-          console.log("enviado")
+          alert("Correo enviado")
         }).catch(function(error) {
           console.error(error);
           if (error.code == 'auth/user-not-found'){
             alert("El usuario no existe en nuestra base de datos");
           }
+          else if (error.code == 'auth/invalid-email'){
+            alert("Para recuperar contraseña ingrese un correo valido");      // aqui podemos poner mas errores pero hay q revisar la sintaxis
+          }
+           else if (error.code == 'auth/user-not-found'){
+            alert("El usuario no existe en nuestra base de datos");
+          }
         });
       }else {
-        alert("Para recuperar contraseña ingrese un correo valido");
+        alert("Se ha producido un error");
       }
     }  
   }
@@ -96,12 +108,18 @@ export default {
 
 <style lang="scss" scoped>
 
-h1{
+h1, .recordatorio, .boton1, .boton1:hover {
   text-align: center;
 }
+
 .login {
           text-decoration-color: #000;
         }
+
+.recordatorio{
+        color: #38006b;
+        font-size: 13px;
+}
 
 .boton1 {
     color:#FFF;

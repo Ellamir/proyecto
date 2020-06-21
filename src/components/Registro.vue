@@ -9,7 +9,7 @@
         {{userOk}}
       </div>
       <div class="alert alert-danger mx-auto" style="width: 350px;" role="alert" v-else-if="error">
-        {{error}}
+        Se ha producido un error. {{error}}
       </div>
     <div class="mx-auto" v-else style="width: 330px;"><h1>Sign up for more!</h1></div>
     </b-form-row>
@@ -17,14 +17,14 @@
       <!-- Email (Auth) -->
       <!-- Aqui tambien podriamos poner una validación de si el usuario ya existe, avisar -->
           <b-form-group class="mx-auto" label-for="correo">
-                <b-form-input class="campo" id="email" v-model="correo"  placeholder="Email"
+                <b-form-input class="campo" id="correo" v-model="correo"  :state="mailState" placeholder="Email"
                lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
     </b-form-row>
 
       <!-- Password (Auth) -->
     <b-form-row>
         <b-form-group class="mx-auto" label-for="clave">
-        <b-form-input class="campo" id="clave" v-model="clave" :state="nameState"
+        <b-form-input class="campo" id="clave" v-model="clave" :state="passState"
           aria-describedby="input-live-help input-live-feedback" type="password" placeholder="Contraseña"
           trim>  </b-form-input> </b-form-group>
 
@@ -38,7 +38,7 @@
         <!-- Username (Perfil) -->
       
           <b-form-group class="mx-auto" label-for="userName">
-                <b-form-input class="campo" id="userName" v-model="userName" placeholder="Nombre de usuario"
+                <b-form-input class="campo" id="userName" v-model="userName" :state="nameState" placeholder="Nombre de usuario"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
 
     </b-form-row>
@@ -77,7 +77,14 @@ export default {
 
     watch: {   
       clave() {   
-        this.nameState = this.clave.length > 5 ? true : false
+        this.passState = this.clave.length > 5 ? true : false
+      },
+      correo() {   
+        const emailRe = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+        this.mailState = emailRe.test(this.correo) ? true : false
+      },
+      userName() {   
+        this.nameState = this.userName.length > 0 ? true : false
       }
     },
     
@@ -86,13 +93,19 @@ export default {
         correo: '',
         clave: '',
         userName: '',
-        nameState: null, 
+        mailState: null,
+        passState: null, 
+        nameState: null,
         error: '',
         userOk: ''
       }
     },
    
     methods: {
+     
+
+
+
         // cambia valor ingresado a todo minusculas con  return value.toLowerCase()
         formatter(value) {
         return value.toLowerCase().trim();//espero q esto ademas le saque aires sobrantes
@@ -101,25 +114,43 @@ export default {
 
           userRegister(){
             if (this.userName && this.correo && this.clave){
+              this.error = '';
                 firebase.auth().createUserWithEmailAndPassword(this.correo, this.clave).then(response=>{
                     console.log(response.user)
                     return response.user.updateProfile({
                         displayName: this.userName
                     }).then(()=>{
+                      this.mailState = null;
+                      this.passState = null;
+                      this.nameState = null;
                       this.userOk = 'Usuario creado, ya puedes ingresar';
+                      
                           setTimeout(()=>{
+                            this.mailState = null;
+                            this.passState = null;
                             this.nameState = null;
                             this.correo = '';
                             this.userName = '';
                             this.clave = '';
                             this.userOk = '';
+                            this.error = '';
                             this.$router.push('/tam');  //pasa directo a perfil
-                          },2000);
+                          },1000);
                         
                     })
                 }).catch(error => console.error(error))
+            //  this.error = 'Si creaste usuario, prueba a ingresar'
+             setTimeout(()=>{
+                            
+                            this.correo = '';
+                            this.userName = '';
+                            this.clave = '';
+                            this.userOk = '';
+                            this.error = '';
+                            this.$router.push('/access');  //pasa al login
+                          },1000);
             }else{
-                alert("Ingrese un correo y una contraseña");  // esta alerta no está saltando
+                this.error = 'Crea usuario con email, contraseña y nombre';
             }
         } 
     },
