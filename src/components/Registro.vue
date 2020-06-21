@@ -2,10 +2,18 @@
 <div class="mx-auto pt-5 pb-5"> 
     <!-- Necesito ayuda para centrar este titulo.-->
      <!-- No lleva color aquí sino que en la vista/componente que lo contiene -->
-    <div class="mx-auto" style="width: 330px;"><h1>Sign up for more!</h1></div>
+     
   <b-container fluid>
     <b-form-row>
-        
+        <div class="alert alert-success mx-auto" style="width: 350px;" role="alert" block v-if="userOk">
+        {{userOk}}
+      </div>
+      <div class="alert alert-danger mx-auto" style="width: 350px;" role="alert" v-else-if="error">
+        {{error}}
+      </div>
+    <div class="mx-auto" v-else style="width: 330px;"><h1>Sign up for more!</h1></div>
+    </b-form-row>
+    <b-form-row>
       <!-- Email (Auth) -->
       <!-- Aqui tambien podriamos poner una validación de si el usuario ya existe, avisar -->
           <b-form-group class="mx-auto" label-for="correo">
@@ -46,6 +54,9 @@
 
     <b-button @click="userRegister" class="ml-auto boton1">Sign up!</b-button> <!--on click no hace nada-->
   </b-form>
+<br>
+
+
 
     </div>
         
@@ -76,6 +87,8 @@ export default {
         clave: '',
         userName: '',
         nameState: null, 
+        error: '',
+        userOk: ''
       }
     },
    
@@ -93,15 +106,20 @@ export default {
                     return response.user.updateProfile({
                         displayName: this.userName
                     }).then(()=>{
-                        this.correo = '';
-                        this.userName = '';
-                        this.clave = '';
-                        this.nameState = null;
-                        this.$router.push('/access');
+                      this.userOk = 'Usuario creado, ya puedes ingresar';
+                          setTimeout(()=>{
+                            this.nameState = null;
+                            this.correo = '';
+                            this.userName = '';
+                            this.clave = '';
+                            this.userOk = '';
+                            this.$router.push('/tam');  //pasa directo a perfil
+                          },2000);
+                        
                     })
                 }).catch(error => console.error(error))
             }else{
-                alert("Ingrese un correo y una contraseña");
+                alert("Ingrese un correo y una contraseña");  // esta alerta no está saltando
             }
         } 
     },
