@@ -72,6 +72,8 @@
 
 <script>
 import firebase from 'firebase';
+import md5 from 'js-md5';
+
 export default {
     name: 'Registro',
 
@@ -84,7 +86,7 @@ export default {
         this.mailState = emailRe.test(this.correo) ? true : false
       },
       userName() {   
-        this.nameState = this.userName.length > 0 ? true : false
+        this.nameState = this.userName.length >= 1 ? true : false
       }
     },
     
@@ -117,8 +119,14 @@ export default {
               this.error = '';
                 firebase.auth().createUserWithEmailAndPassword(this.correo, this.clave).then(response=>{
                     console.log(response.user)
+                    var user = firebase.auth().currentUser;
+                    var gravatar = md5(user.email);
+            console.log('email en md5',gravatar);
+            let URL = "https://secure.gravatar.com/avatar/"+gravatar+"?s=200&d=mp";
+            this.gravatarURL=URL;
                     return response.user.updateProfile({
-                        displayName: this.userName
+                        displayName: this.userName,
+                        photoURL: this.gravatarURL,
                     }).then(()=>{
                       this.mailState = null;
                       this.passState = null;
@@ -135,22 +143,14 @@ export default {
                             this.userOk = '';
                             this.error = '';
                             this.$router.push('/tam');  //pasa directo a perfil
-                          },1000);
+                          },2000);
                         
                     })
-                }).catch(error => console.error(error))
+               }).catch(error => console.error(error))
             //  this.error = 'Si creaste usuario, prueba a ingresar'
-             setTimeout(()=>{
-                            
-                            this.correo = '';
-                            this.userName = '';
-                            this.clave = '';
-                            this.userOk = '';
-                            this.error = '';
-                            this.$router.push('/access');  //pasa al login
-                          },1000);
+             
             }else{
-                this.error = 'Crea usuario con email, contraseña y nombre';
+               alert("Ingrese un correo y una contraseña");
             }
         } 
     },
