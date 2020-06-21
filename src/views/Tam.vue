@@ -1,16 +1,24 @@
 <template>
     <div>
-        <div id="franjasaludo" class="morado text-white">
         
+        
+        <div id="franjasaludo" class="morado text-white">
         <p @click="saludo"> Saludar en el console log </p>
         <h1 class="hola" v-html="hola"></h1>
-        <img :src="gravatarURL" alt="algo">
+        <img :src="gravatarURL" alt="algo"/> <span>Foto en gravatar</span> 
+        <br><br>
+        <b-avatar :src="foto" /> <span>Avatar desde foto firebase</span> 
+        <br><br>
+        <b-avatar :src="foto" rounded style="font-size: 4rem;"></b-avatar> <span>Foto en firebase</span> 
         </div>
     </div>
     
     <!-- <featured></featured> -->
         
     
+
+
+
 </template>
 
 <script>
@@ -28,7 +36,8 @@ export default {
             return {
             //gravatarURL: 'https://es.gravatar.com/avatar/HASH-STRING?s=200&d=mp'   
             gravatarURL: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp',  //fantasma default
-            hola: ''
+            hola: '',
+            foto: ''
             }
     },
 
@@ -41,13 +50,16 @@ export default {
     methods: {
     saludo(){
             var user = firebase.auth().currentUser;
-            console.log('desde el metodo',user.displayName);
+            console.log('desde Firebase:',user.displayName);
+            console.log('desde Firebase:',user.photoURL);
             console.log(user.email);
             var gravatar = md5(user.email);
             console.log('email en md5',gravatar);
             let URL = "https://secure.gravatar.com/avatar/"+gravatar+"?s=200&d=mp";
             this.gravatarURL=URL;
             let nombre = (user.displayName)  // capitalizar nombre depende de CSS o arreglar el input
+            let foto = (user.photoURL) 
+            this.foto = foto
             this.hola="Hola "+nombre;
             }
  
@@ -67,6 +79,8 @@ export default {
     //     }
     //   },
         
+
+
 
     
 }

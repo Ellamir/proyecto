@@ -28,10 +28,12 @@
 
       <b-navbar-nav>  <!-- Links de navegación están TODOS y en orden secuencial por ahora -->
         <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/access">User Access</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/tam">PERFIL</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/access">Access</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/tam"><b-avatar :src="gravatarURL" /></router-link></b-nav-item>
         <b-nav-item href="#"><li class="nav-link" @click="salida" to="/">Logout</li></b-nav-item> 
       </b-navbar-nav>
+
+      <!--el GRAVATARURL que esta arriba deberia responder a un STATE de VUEX -->
 
     </b-collapse>
   </b-navbar>
