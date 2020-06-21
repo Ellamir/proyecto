@@ -2,7 +2,7 @@
 <div>
   <b-navbar toggleable="lg" type="dark" class="oscuro">
     <b-navbar-brand href="#">
-      <router-link class="b-navbar-brand" to="/"><b-img src="http://dragon.cl/portafolio/ludoteca.png"></b-img></router-link>
+      <router-link class="b-navbar-brand" to="/"><b-img src="http://dragon.cl/portafolio/ludoteca/ludoteca.png"></b-img></router-link>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -25,9 +25,12 @@
 
        
       </b-navbar-nav>
-      <b-navbar-nav>
-        <b-nav-item href="#"><router-link class="nav-link" to="/access">User Access</router-link></b-nav-item>
+
+      <b-navbar-nav>  <!-- Links de navegación están TODOS y en orden secuencial por ahora -->
         <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/access">User Access</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/tam">PERFIL</router-link></b-nav-item>
+        <b-nav-item href="#"><li class="nav-link" @click="salida" to="/">Logout</li></b-nav-item> 
       </b-navbar-nav>
 
     </b-collapse>
@@ -36,17 +39,17 @@
 </template>
 
 <script>
-// import firebase from 'firebase';
+import firebase from 'firebase';
 
 export default {
   name: 'Navegacion',
   methods: {
-    /* salida(){
+     salida(){
       firebase.auth().signOut().then(()=>{
         console.log("salida de usuario")
-        this.$router.push('/login');
+        this.$router.push('/access');
       })
-    } */
+    } 
   },
 }
 </script>
