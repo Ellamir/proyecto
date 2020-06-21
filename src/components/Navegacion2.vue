@@ -12,10 +12,7 @@
 
       <!-- center aligned nav items -->
       <b-navbar-nav class="mx-auto">
-        
-BIENVENIDO, USUARIO REGISTRADO
-
-          <!-- <b-nav-form>
+         <b-nav-form>
        <b-input-group size="sm" class="mb-2">
      
       <b-form-input type="search" placeholder="Buscas un juego?"></b-form-input>
@@ -23,16 +20,15 @@ BIENVENIDO, USUARIO REGISTRADO
         <b-icon icon="search"></b-icon>
       </b-input-group-append>
     </b-input-group>
-        </b-nav-form> -->
+        </b-nav-form>
 
        
       </b-navbar-nav>
-      <b-navbar-nav>
-        <b-nav-item href="#"><router-link class="nav-link" to="/access">User Access</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/tam">PERFIL</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" @click="salida" to="/">Logout</router-link></b-nav-item>
-
+ <b-navbar-nav>
+         <b-nav-item href="#">
+            <router-link class="nav-link" to="/">Perfil</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" @click="salida" to="/login">Logout</router-link></b-nav-item>
+       <!-- <b-nav-item href="#"><router-link class="nav-link" to="/registro">Registro</router-link></b-nav-item>-->
       </b-navbar-nav>
 
     </b-collapse>
@@ -41,17 +37,17 @@ BIENVENIDO, USUARIO REGISTRADO
 </template>
 
 <script>
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 export default {
   name: 'Navegacion',
   methods: {
-    salida(){
+    /* salida(){
       firebase.auth().signOut().then(()=>{
         console.log("salida de usuario")
         this.$router.push('/login');
       })
-    }
+    } */
   },
 }
 

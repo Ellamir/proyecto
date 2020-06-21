@@ -8,14 +8,14 @@
         
       <!-- Email (Auth) -->
       <!-- Aqui tambien podriamos poner una validación de si el usuario ya existe, avisar -->
-          <b-form-group class="mx-auto" label-for="correo">
-                <b-form-input class="campo" id="email" v-model="correo" placeholder="Email"
+          <b-form-group class="mx-auto" label-for="email">
+                <b-form-input class="campo" id="email" v-model="correo" type="email" placeholder="Email"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
     </b-form-row>
 
       <!-- Password (Auth) -->
     <b-form-row>
-        <b-form-group class="mx-auto" label-for="clave">
+        <b-form-group class="mx-auto" label-for="email">
         <b-form-input class="campo" id="clave" v-model="clave" :state="nameState"
           aria-describedby="input-live-help input-live-feedback" placeholder="Contraseña"
           trim>  </b-form-input> </b-form-group>
@@ -30,7 +30,7 @@
         <!-- Username (Perfil) -->
       
           <b-form-group class="mx-auto" label-for="userName">
-                <b-form-input class="campo" id="userName" v-model="userName" placeholder="Nombre de usuario"
+                <b-form-input class="campo" id="userName" v-model="userName" type="userName" placeholder="Nombre de usuario"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
 
     </b-form-row>
@@ -44,7 +44,7 @@
          <b-form inline> 
 <b-form-checkbox class="mr-auto mb-2 mr-sm-2 mb-sm-0">Accept terms</b-form-checkbox>
 
-    <b-button @click="userRegister" class="ml-auto boton1">Sign up!</b-button> <!--on click no hace nada-->
+    <b-button @click="signup" class="ml-auto boton1">Sign up!</b-button> <!--on click no hace nada-->
   </b-form>
 
     </div>
@@ -60,19 +60,19 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+// import firebase from 'firebase';
 export default {
     name: 'Registro',
 
     watch: {   
-      clave() {   
+      clave() {   // esto no está funcionando por ahora no se pq
         this.nameState = this.clave.length > 5 ? true : false
       }
     },
     
     data() {
         return {
-        correo: '',
+        email: '',
         clave: '',
         userName: '',
         nameState: null, 
@@ -80,13 +80,13 @@ export default {
     },
    
     methods: {
-        // cambia valor ingresado a todo minusculas y (espero) le saca los espacios alrededor
+        // cambia valor ingresado a todo minusculas
         formatter(value) {
-        return value.toLowerCase(value.trim())
+        return value.toLowerCase()
         },
 
 
-          userRegister(){
+        /* userRegister(){
             if (this.userName && this.correo && this.clave){
                 firebase.auth().createUserWithEmailAndPassword(this.correo, this.clave).then(response=>{
                     console.log(response.user)
@@ -97,13 +97,13 @@ export default {
                         this.userName = '';
                         this.clave = '';
                         this.nameState = null;
-                        this.$router.push('/tam');  // esto debe cambiar por vista de perfil real 
+                        this.$router.push('/');
                     })
                 }).catch(error => console.error(error))
             }else{
                 alert("Ingrese un correo y una contraseña");
             }
-        } 
+        } */
     },
 }
 </script>

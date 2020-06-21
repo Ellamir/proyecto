@@ -1,8 +1,8 @@
 <template>
   <div>
       
-    <Navegacion2 v-if="user"></Navegacion2> <!-- hay que reemplazar el estado correcto -->
-    <Navegacion v-else></Navegacion>
+    <!-- <Navegacion2></Navegacion2> -->
+    <Navegacion></Navegacion>
     
     
     <router-view/>
@@ -14,7 +14,7 @@
 import Navegacion from './components/Navegacion.vue';
 // import Navegacion2 from './components/Navegacion2.vue';
 import Footer from './components/Footer.vue';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 export default {
   name: 'App',
@@ -24,34 +24,15 @@ export default {
     Footer,
   },
   mounted() {
-     firebase.auth().onAuthStateChanged(user=>{
+    /* firebase.auth().onAuthStateChanged(user=>{
       if (user) {
         this.$store.dispatch('idUserLog',user.uid);
       }else{
         console.log("Salida de Usuario")
         this.$store.dispatch('idUserLog','');
       }
-    }) 
+    }) */
   },
-  // firebase.auth().onAuthStateChanged(dato=>{
-  //     if(dato){
-  //       this.usuario = dato.displayName;
-  //       this.correoUser = dato.email;
-  //       this.uid = dato.uid;
-  //       console.log(dato.emailVerified);
-  //       if (!dato.emailVerified){
-  //           dato.sendEmailVerification().then(function() {
-  //           console.log("correo enviado")
-  //           console.log(dato.emailVerified);
-  //         }).catch(function(error) {
-  //           console.log(error);
-  //         });
-  //       }
-  //     }else{
-  //       this.usuario = '';
-  //     }
-  //   })
-  // },
 }
 </script>
 

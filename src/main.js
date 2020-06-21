@@ -11,11 +11,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
-import firebase from 'firebase';
+/* import firebase from 'firebase';
 import { firebaseConfig } from "./config/firebaseConfig";
 
 firebase.initializeApp(firebaseConfig);
-export const db = firebase.firestore(); 
+export const db = firebase.firestore(); */
 
 Vue.config.productionTip = false
 

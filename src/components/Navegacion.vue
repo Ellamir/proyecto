@@ -28,9 +28,6 @@
       <b-navbar-nav>
         <b-nav-item href="#"><router-link class="nav-link" to="/access">User Access</router-link></b-nav-item>
         <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/tam">PERFIL</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" @click="salida" to="/">Logout</router-link></b-nav-item>
-
       </b-navbar-nav>
 
     </b-collapse>
@@ -39,17 +36,17 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 export default {
   name: 'Navegacion',
   methods: {
-     salida(){
+    /* salida(){
       firebase.auth().signOut().then(()=>{
         console.log("salida de usuario")
         this.$router.push('/login');
       })
-    } 
+    } */
   },
 }
 </script>
