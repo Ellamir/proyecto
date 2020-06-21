@@ -5,7 +5,7 @@
         <b-card-group deck>
             <b-card v-for="(item, index) in gameArray" :key="index"
                 :title="item.name"
-                :img-src="item.image_url"
+                :img-src="item.images.small"
                 :img-alt="item.name"
                 img-top
             >
