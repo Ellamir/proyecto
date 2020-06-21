@@ -6,7 +6,6 @@
     
     
     <router-view/>
-    <!-- <Coleccion></Coleccion> -->
     <Footer></Footer>
   </div>
 </template>
@@ -22,7 +21,6 @@ export default {
   components: {
     Navegacion, 
     // Navegacion2,
-    // Coleccion,
     Footer,
   },
   mounted() {
