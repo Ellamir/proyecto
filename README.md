@@ -1,4 +1,4 @@
-# Ludoteca
+# LUDOTECA (Biblioteca de juegos de tablero)
 
 El objetivo de este sitio es generar una biblioteca de los juegos que posee cada usuario registrado.
 Los usuarios pueden agregar juegos a su biblioteca, la que extrae información de una API remota con detalles de cada juego. 
