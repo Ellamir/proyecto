@@ -8,8 +8,8 @@
         
       <!-- Email (Auth) -->
       <!-- Aqui tambien podriamos poner una validación de si el usuario ya existe, avisar -->
-          <b-form-group class="mx-auto" label-for="email">
-                <b-form-input class="campo" id="email" v-model="correo" type="email" placeholder="Email"
+          <b-form-group class="mx-auto" label-for="correo">
+                <b-form-input class="campo" id="email" v-model="correo"  placeholder="Email"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
     </b-form-row>
 
@@ -30,7 +30,7 @@
         <!-- Username (Perfil) -->
       
           <b-form-group class="mx-auto" label-for="userName">
-                <b-form-input class="campo" id="userName" v-model="userName" type="userName" placeholder="Nombre de usuario"
+                <b-form-input class="campo" id="userName" v-model="userName" placeholder="Nombre de usuario"
                 lazy-formatter :formatter="formatter"></b-form-input> </b-form-group>
 
     </b-form-row>
@@ -80,9 +80,9 @@ export default {
     },
    
     methods: {
-        // cambia valor ingresado a todo minusculas
+        // cambia valor ingresado a todo minusculas con  return value.toLowerCase()
         formatter(value) {
-        return value.toLowerCase()
+        return value.toLowerCase(value.trim()) //espero q esto ademas le saque aires sobrantes
         },
 
 
@@ -97,7 +97,7 @@ export default {
                         this.userName = '';
                         this.clave = '';
                         this.nameState = null;
-                        this.$router.push('/');
+                        this.$router.push('/access');
                     })
                 }).catch(error => console.error(error))
             }else{
