@@ -80,9 +80,9 @@ export default {
     },
    
     methods: {
-        // cambia valor ingresado a todo minusculas
+        // cambia valor ingresado a todo minusculas y (espero) le saca los espacios alrededor
         formatter(value) {
-        return value.toLowerCase()
+        return value.toLowerCase(value.trim())
         },
 
 
@@ -97,7 +97,7 @@ export default {
                         this.userName = '';
                         this.clave = '';
                         this.nameState = null;
-                        this.$router.push('/');
+                        this.$router.push('/tam');  // esto debe cambiar por vista de perfil real 
                     })
                 }).catch(error => console.error(error))
             }else{
