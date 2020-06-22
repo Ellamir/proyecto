@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-import {/* api ,*/ random} from '../dbDummy'
+import { apiCall } from '../config/conexionApi'
 
 Vue.use(Vuex)
 
@@ -14,7 +13,7 @@ export default new Vuex.Store({
     },
     randomFeature: [],
     featuredQuantity: 4,
-
+    popularToday:{},
   },
   getters: {
     showHeroIMG(state) 
@@ -24,6 +23,10 @@ export default new Vuex.Store({
     showFeature(state)
     {
       return state.randomFeature;
+    },
+    showPopular(state)
+    {
+      return state.popularToday;
     }
   },
   mutations: {
@@ -34,6 +37,10 @@ export default new Vuex.Store({
     dataToRandomFeature(state,randomGame) 
     {
       state.randomFeature.push(randomGame);
+    },
+    dataToPopularToday(state,popularGame)
+    {
+      state.popularToday = popularGame;
     }
   },
   actions: {
@@ -42,7 +49,6 @@ export default new Vuex.Store({
       let callRandom = 'random=true';
 
       async function apiRes () {
-        console.log('llamando a la api...');
         const getRandom = await (await apiCall(callRandom)).data.game;
         context.commit('dataToRandomHero', getRandom);
       }
@@ -55,13 +61,23 @@ export default new Vuex.Store({
       const apiRes = async () => {
         for(let i = 0; i < 4; i++) 
         {
-          console.log('llamando a la api...');
           const getRandom = await (await apiCall(callRandom)).data.game;
-          console.log('la data',getRandom);
           context.commit('dataToRandomFeature',getRandom);
         }
       }
       apiRes()
+    },
+    callPopularToday(context)
+    {
+      let callPopular = 'order_by=popularity';
+
+      const apiRes = async () => {
+        const getPopular = await (await apiCall(callPopular)).data.games[0];
+        console.log(getPopular);
+        context.commit('dataToPopularToday', getPopular);
+      }
+
+      apiRes();
     }
   } 
 })
