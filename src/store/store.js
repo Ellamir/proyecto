@@ -13,7 +13,7 @@ export default new Vuex.Store({
     },
     randomFeature: [],
     featuredQuantity: 4,
-
+    popularToday:{},
   },
   getters: {
     showHeroIMG(state) 
@@ -23,6 +23,10 @@ export default new Vuex.Store({
     showFeature(state)
     {
       return state.randomFeature;
+    },
+    showPopular(state)
+    {
+      return state.popularToday;
     }
   },
   mutations: {
