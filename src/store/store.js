@@ -65,6 +65,18 @@ export default new Vuex.Store({
         }
       }
       apiRes()
+    },
+    callPopularToday(context)
+    {
+      let callPopular = 'order_by=popularity';
+
+      const apiRes = async () => {
+        const getPopular = await (await apiCall(callPopular)).data.games[0];
+        console.log(getPopular);
+        context.commit('dataToPopularToday', getPopular);
+      }
+
+      apiRes();
     }
   } 
 })
