@@ -21,14 +21,9 @@ import {mapActions, mapGetters} from 'vuex'
 
 export default {
     name: 'PopularToday',
-    data() {
-        return {
-            
-        }
-    },
     computed: {
         ...mapActions([
-            'callPopularToday'
+            'callPopularToday',
         ]),
         ...mapGetters([
             'showPopular'
