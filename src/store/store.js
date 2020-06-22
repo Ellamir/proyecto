@@ -7,6 +7,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+
+    uidUser: '',
+
+
+
     randomHero: {
       images: {
         original: '',
@@ -27,6 +32,12 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    agregandoId(state,idRecibido){
+      state.uidUser = idRecibido;
+    },
+
+
+
     dataToRandomHero(state,random) 
     {
       state.randomHero = random;
@@ -37,6 +48,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
+
+    idUserLog(context,idUsuarioRecibido){
+      context.commit('agregandoId',idUsuarioRecibido);
+    },
+
+
+
+
+
     callDataToHero(context) 
     {
       let callRandom = 'random=true';

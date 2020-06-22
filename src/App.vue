@@ -24,15 +24,18 @@ export default {
     Footer,
   },
   mounted() {
-     firebase.auth().onAuthStateChanged(user=>{
+    firebase.auth().onAuthStateChanged(user=>{
       if (user) {
+        console.log("Usuario logueado")
         this.$store.dispatch('idUserLog',user.uid);
       }else{
         console.log("Salida de Usuario")
         this.$store.dispatch('idUserLog','');
       }
-    }) 
+    });
+    //this.$store.dispatch('activandoMutacionDB');
   },
+
 }
 </script>
 

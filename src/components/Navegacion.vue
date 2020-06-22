@@ -29,7 +29,7 @@
       <b-navbar-nav>  <!-- Links de navegación están TODOS y en orden secuencial por ahora -->
         <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
         <b-nav-item href="#"><router-link class="nav-link" to="/access">Access</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/tam"><b-avatar :src="gravatarURL" /></router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/tam"><b-avatar :src="Uri" /></router-link></b-nav-item>
         <b-nav-item href="#"><li class="nav-link" @click="salida" to="/">Logout</li></b-nav-item> 
       </b-navbar-nav>
 
@@ -42,10 +42,45 @@
 
 <script>
 import firebase from 'firebase';
+// import login from './Login.vue';
 
 export default {
   name: 'Navegacion',
+
+    // computed: {
+    // authState() {
+      /*
+        store: {
+          auth: {
+            name: '',
+            email: '',
+            authenticated: false,
+          }
+        }
+      }
+      */
+    //   return this.$store.auth.authenticated;
+    // },
+
+
+
+
+
   methods: {
+
+    async avatar() {
+      // try ingresar()
+      //  const avatar = await ingresar({ user: this.user, Uri: this.Uri });
+
+
+
+    }, 
+
+
+
+
+
+
      salida(){
       firebase.auth().signOut().then(()=>{
         console.log("salida de usuario")

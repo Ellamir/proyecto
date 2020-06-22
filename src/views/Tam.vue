@@ -5,11 +5,11 @@
         <div id="franjasaludo" class="morado text-white">
         <p @click="saludo"> Saludar en el console log </p>
         <h1 class="hola" v-html="hola"></h1>
-        <img :src="gravatarURL" alt="algo"/> <span>Foto en gravatar</span> 
+        <img :src="Uri" alt="algo"/> <span>Foto en Firebase, desde el Mounted - el gravatar de 200px importado en la creacion de usuario</span> 
         <br><br>
-        <b-avatar :src="foto" /> <span>Avatar desde foto firebase</span> 
+        <b-avatar :src="Uri" /> <span>Avatar bootstrap desde foto firebase (1rem)</span> 
         <br><br>
-        <b-avatar :src="foto" rounded style="font-size: 4rem;"></b-avatar> <span>Foto en firebase</span> 
+        <b-avatar :src="Uri" rounded style="font-size: 4rem;"></b-avatar> <span>Avatar bootstrap en firebase, avatar rounded 4rem</span> 
         </div>
     </div>
     
@@ -31,15 +31,58 @@ import md5 from 'js-md5';
 export default {
     
     name: 'Tam',
+    
 
     data() {
             return {
             //gravatarURL: 'https://es.gravatar.com/avatar/HASH-STRING?s=200&d=mp'   
             gravatarURL: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp',  //fantasma default
             hola: '',
-            foto: ''
+            foto: '',
+            Uri: '',
+            name: '', 
+            email: '', 
+            photoUrl: '', 
+            uid: '',
             }
     },
+
+
+    mounted() {
+      if (this.$store.state.uidUser) {
+          var user = firebase.auth().currentUser;
+          //var name, email, photoUrl, uid, Uri;
+
+            if (user != null) {
+            this.name = user.displayName;
+            this.email = user.email;
+            this.Uri = user.photoURL;
+            //  emailVerified = user.emailVerified;
+            this.uid = user.uid;  
+            }
+
+
+
+
+
+                    //   db.collection(this.$store.state.uidUser).get().then(resp=>{
+                    //       var aux = [];
+                    //       resp.forEach(elemt=>{
+                    //           aux.push({
+                    //             id: elemt.data().id,
+                    //             last_name: elemt.data().last_name,
+                    //             first_name: elemt.data().first_name,
+                    //             avatar: elemt.data().avatar,
+                    //             email: elemt.data().email,
+                    //             idDoc: elemt.id,
+                    //             favorito: elemt.data().favorito
+                    //           })
+                    //       });
+                    //       this.datosFavoritos = aux;})
+            }else{
+                this.$router.push('/access');
+            }
+  },
 
     components: {
         
