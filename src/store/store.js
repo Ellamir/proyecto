@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-import {/* api ,*/ random} from '../dbDummy'
+import { apiCall } from '../config/conexionApi'
 
 Vue.use(Vuex)
 
