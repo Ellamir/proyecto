@@ -1,10 +1,7 @@
 <template>
   <div>
-      
     <!-- <Navegacion2></Navegacion2> -->
     <Navegacion></Navegacion>
-    
-    
     <router-view/>
     <Footer></Footer>
   </div>
