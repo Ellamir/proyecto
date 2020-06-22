@@ -29,7 +29,9 @@
       <b-navbar-nav>  <!-- Links de navegación están TODOS y en orden secuencial por ahora -->
         <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
         <b-nav-item href="#"><router-link class="nav-link" to="/access">Access</router-link></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/tam"><b-avatar :src="Uri" /></router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/tam">
+        <b-avatar :src="$store.state.uidUser.photoURL" />
+        </router-link></b-nav-item>
         <b-nav-item href="#"><li class="nav-link" @click="salida" to="/">Logout</li></b-nav-item> 
       </b-navbar-nav>
 

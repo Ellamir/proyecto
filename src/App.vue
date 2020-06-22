@@ -27,7 +27,7 @@ export default {
     firebase.auth().onAuthStateChanged(user=>{
       if (user) {
         console.log("Usuario logueado")
-        this.$store.dispatch('idUserLog',user.uid);
+        this.$store.dispatch('idUserLog',user);
       }else{
         console.log("Salida de Usuario")
         this.$store.dispatch('idUserLog','');

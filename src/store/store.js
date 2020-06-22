@@ -49,8 +49,8 @@ export default new Vuex.Store({
   },
   actions: {
 
-    idUserLog(context,idUsuarioRecibido){
-      context.commit('agregandoId',idUsuarioRecibido);
+    idUserLog(context,dataUsuarioRecibido){
+      context.commit('agregandoId',dataUsuarioRecibido);
     },
 
 

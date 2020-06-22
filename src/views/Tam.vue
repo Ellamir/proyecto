@@ -2,15 +2,84 @@
     <div>
         
         
-        <div id="franjasaludo" class="morado text-white">
+       
+
+
+ <div>
+            <b-card bg-variant="light">
+                <b-form-group >
+
+                   
+               
+                <b-img left :src="photoURL" rounded py-auto alt="Left image"></b-img>
+                
+                
+
+                <b-form-group
+                    label-cols-sm="3"
+                    label="Name:"
+                    label-align-sm="right"
+                    label-for="name"
+                >
+                    <b-form-input id="name" v-model="name" class="mayusculas"></b-form-input>
+                </b-form-group>
+
+                <b-form-group
+                    label-cols-sm="3"
+                    label="Email"
+                    label-align-sm="right"
+                    label-for="email"
+                >
+                    <b-form-input id="email" v-model="email"></b-form-input>
+                </b-form-group>
+
+                <b-form-group
+                    label-cols-sm="3"
+                    label="Password:"
+                    label-align-sm="right"
+                    label-for="password"
+                >
+                    <b-form-input type="password" v-model="clave" id="password"></b-form-input>
+                </b-form-group>
+
+                <b-form-group
+                    label-cols-sm="3"
+                    label="Imagen de perfil:"
+                    label-align-sm="right"
+                    label-for="photoURL"
+                >
+                    <b-form-input id="photoURL" v-model="photoURL"></b-form-input><br>
+                    <p class="small">Recomendamos usar <a href="https://es.gravatar.com/">Gravatar</a> para desplegar imágenes de perfil.</p>
+                </b-form-group>
+
+                
+                </b-form-group>
+            </b-card>
+            </div>
+
+ <div id="franjasaludo" class="morado text-white">
+
+
         <p @click="saludo"> Saludar en el console log </p>
         <h1 class="hola" v-html="hola"></h1>
-        <img :src="Uri" alt="algo"/> <span>Foto en Firebase, desde el Mounted - el gravatar de 200px importado en la creacion de usuario</span> 
+        <b-img :src="Uri" rounded="circle" alt="algo"/> <span>Foto en Firebase, desde el Mounted - el gravatar de 200px importado en la creacion de usuario</span> 
         <br><br>
         <b-avatar :src="Uri" /> <span>Avatar bootstrap desde foto firebase (1rem)</span> 
         <br><br>
         <b-avatar :src="Uri" rounded style="font-size: 4rem;"></b-avatar> <span>Avatar bootstrap en firebase, avatar rounded 4rem</span> 
         </div>
+
+
+
+        <div>
+            <usercard></usercard>
+
+            </div>
+
+
+
+
+
     </div>
     
     <!-- <featured></featured> -->
@@ -23,6 +92,7 @@
 
 <script>
 // import Featured from '../components/Featured';
+import Usercard from '../components/Usercard';
 import firebase from 'firebase';
 import md5 from 'js-md5';
 //protected $appends = ['gravatar'];
@@ -44,6 +114,7 @@ export default {
             email: '', 
             photoUrl: '', 
             uid: '',
+            clave: '',
             }
     },
 
@@ -57,8 +128,9 @@ export default {
             this.name = user.displayName;
             this.email = user.email;
             this.Uri = user.photoURL;
+            this.clave = user.password;
             //  emailVerified = user.emailVerified;
-            this.uid = user.uid;  
+            this.photoURL = user.photoURL;  
             }
 
 
@@ -86,6 +158,7 @@ export default {
 
     components: {
         
+        Usercard
         // Featured,
         
     },
@@ -141,5 +214,10 @@ export default {
           text-decoration-color: #FFF;
         }
 
-.hola { text-transform: capitalize; }
+.mayusculas { text-transform: capitalize; }
+
+.small{
+        color: #38006b;
+        font-size: 13px;
+}
 </style> 
