@@ -23,7 +23,7 @@ export default {
     name: 'PopularToday',
     data() {
         return {
-
+            
         }
     },
     computed: {
@@ -39,4 +39,24 @@ export default {
         this.callPopularToday();
 
     }
+}
 </script>
+
+<style lang="scss" scoped>
+h2 {
+    border-bottom: 1px solid #727272;
+    margin-bottom: 0;
+}
+.cuadroNaranjo {
+    margin-bottom: 1rem;
+    
+    &:after{
+        content: " ";
+        display: block;
+        height: 6px;
+        max-width: 55px;
+        background: #EC8E4C;
+    }
+}
+
+</style>
