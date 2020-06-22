@@ -37,6 +37,10 @@ export default new Vuex.Store({
     dataToRandomFeature(state,randomGame) 
     {
       state.randomFeature.push(randomGame);
+    },
+    dataToPopularToday(state,popularGame)
+    {
+      state.popularToday = popularGame;
     }
   },
   actions: {
