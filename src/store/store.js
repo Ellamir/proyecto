@@ -49,7 +49,6 @@ export default new Vuex.Store({
       let callRandom = 'random=true';
 
       async function apiRes () {
-        console.log('llamando a la api...');
         const getRandom = await (await apiCall(callRandom)).data.game;
         context.commit('dataToRandomHero', getRandom);
       }
@@ -62,9 +61,7 @@ export default new Vuex.Store({
       const apiRes = async () => {
         for(let i = 0; i < 4; i++) 
         {
-          console.log('llamando a la api...');
           const getRandom = await (await apiCall(callRandom)).data.game;
-          console.log('la data',getRandom);
           context.commit('dataToRandomFeature',getRandom);
         }
       }
