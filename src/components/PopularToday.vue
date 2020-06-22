@@ -2,6 +2,8 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
+
 export default {
     name: 'PopularToday',
     data() {
@@ -9,4 +11,14 @@ export default {
 
         }
     },
+    computed: {
+        ...mapActions([
+            'callPopularToday'
+        ]),
+    },
+    beforeMount: function() 
+    {
+        this.callPopularToday();
+
+    }
 </script>
