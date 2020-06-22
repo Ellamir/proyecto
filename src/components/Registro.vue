@@ -99,13 +99,13 @@ export default {
         passState: null, 
         nameState: null,
         error: '',
-        userOk: ''
+        userOk: '',
+        
       }
     },
    
     methods: {
      
-
 
 
         // cambia valor ingresado a todo minusculas con  return value.toLowerCase()
@@ -116,6 +116,10 @@ export default {
 
           userRegister(){
             if (this.userName && this.correo && this.clave){
+              let vari = false;
+              if (vari){alert("mensajes que no funcionan");}
+              
+              else {
               this.error = '';
                 firebase.auth().createUserWithEmailAndPassword(this.correo, this.clave).then(response=>{
                     console.log(response.user)
@@ -147,13 +151,13 @@ export default {
                         
                     })
                }).catch(error => console.error(error))
-            //  this.error = 'Si creaste usuario, prueba a ingresar'
+              }
              
             }else{
                alert("Ingrese un correo y una contraseña");
             }
         } 
-    },
+    }
 }
 </script>
 
