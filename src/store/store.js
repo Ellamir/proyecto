@@ -36,8 +36,11 @@ export default new Vuex.Store({
     },
     dataToRandomFeature(state,randomGame) 
     {
-      state.randomFeature = [],
       state.randomFeature.push(randomGame);
+    },
+    clearFeatured(state)
+    {
+      state.randomFeature = [];
     },
     dataToPopularToday(state,popularGame)
     {
@@ -60,6 +63,7 @@ export default new Vuex.Store({
     callDataToFeature(context)
     {
       let callRandom = 'random=true';
+      context.commit('clearFeatured')
 
       const apiRes = async () => {
         for(let i = 0; i < 4; i++) 
