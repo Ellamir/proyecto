@@ -14,6 +14,7 @@ export default new Vuex.Store({
     randomFeature: [],
     featuredQuantity: 4,
     popularToday:{},
+    myFavs:[],
   },
   getters: {
     showHeroIMG(state) 
@@ -27,7 +28,12 @@ export default new Vuex.Store({
     showPopular(state)
     {
       return state.popularToday;
-    }
+    },
+    showFavs(state)
+    {
+      return state.myFavs;
+    },
+
   },
   mutations: {
     dataToRandomHero(state,random) 
@@ -45,6 +51,10 @@ export default new Vuex.Store({
     dataToPopularToday(state,popularGame)
     {
       state.popularToday = popularGame;
+    },
+    addToFavorites(state, game)
+    {
+      state.myFavs.push(game);
     }
   },
   actions: {
@@ -85,6 +95,20 @@ export default new Vuex.Store({
           await apiCall(callPopular)
         ).data.games[0];
         context.commit('dataToPopularToday', getPopular);
+      }
+
+      apiRes();
+    },
+    callFavorites(context,id)
+    {
+      let selectedGame = `ids=${id}`;
+      // la llamada es parte de otra funcion.
+      // Pasar selectedGame directo como un string al arreglo
+      const apiRes = async () => {
+        const getFav = await (
+          await apiCall(selectedGame)
+        ).data.games[0];
+        context.commit('addToFavorites', getFav);
       }
 
       apiRes();
