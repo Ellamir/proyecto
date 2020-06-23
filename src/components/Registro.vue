@@ -71,21 +71,13 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-// import firebase from 'firebase';
-=======
 import firebase from 'firebase';
 import md5 from 'js-md5';
 
->>>>>>> componentes
 export default {
     name: 'Registro',
 
     watch: {   
-<<<<<<< HEAD
-      clave() {   // esto no está funcionando por ahora no se pq
-        this.nameState = this.clave.length > 5 ? true : false
-=======
       clave() {   
         this.passState = this.clave.length > 5 ? true : false
       },
@@ -95,7 +87,6 @@ export default {
       },
       userName() {   
         this.nameState = this.userName.length >= 1 ? true : false
->>>>>>> componentes
       }
     },
     
@@ -108,13 +99,13 @@ export default {
         passState: null, 
         nameState: null,
         error: '',
-        userOk: ''
+        userOk: '',
+        
       }
     },
    
     methods: {
      
-
 
 
         // cambia valor ingresado a todo minusculas con  return value.toLowerCase()
@@ -125,6 +116,10 @@ export default {
 
         /* userRegister(){
             if (this.userName && this.correo && this.clave){
+              let vari = false;
+              if (vari){alert("mensajes que no funcionan");}
+              
+              else {
               this.error = '';
                 firebase.auth().createUserWithEmailAndPassword(this.correo, this.clave).then(response=>{
                     console.log(response.user)
@@ -151,18 +146,18 @@ export default {
                             this.clave = '';
                             this.userOk = '';
                             this.error = '';
-                            this.$router.push('/tam');  //pasa directo a perfil
+                            this.$router.push('/profile');  //pasa directo a perfil
                           },2000);
                         
                     })
                }).catch(error => console.error(error))
-            //  this.error = 'Si creaste usuario, prueba a ingresar'
+              }
              
             }else{
                alert("Ingrese un correo y una contraseña");
             }
-        } */
-    },
+        } 
+    }
 }
 </script>
 

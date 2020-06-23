@@ -1,18 +1,19 @@
 <template>
     <div>
-        <hero></hero>
+        <popular-today></popular-today>
         <featured></featured>
+
     </div>
 </template>
 
 <script>
-import Hero from '../components/Hero';
+import PopularToday from '../components/PopularToday';
 import Featured from '../components/Featured'
 
 export default {
     name: 'Ana-Test',
     components: {
-        Hero,
+        PopularToday,
         Featured,
     }
 }

@@ -1,82 +1,21 @@
 <template>
     <div>
-        
-        
-       
-  <!--
 
- <div>
-           <b-card bg-variant="light">
-                <b-form-group >
+        <b-container class="bv-example-row" fluid="md">
 
-                   
-               
-                <b-img left :src="photoURL" rounded py-auto alt="Left image"></b-img>
-                
-                
+  <b-row>
+    <b-col lg="4">
+        <usercard></usercard>
+    </b-col>
+    <b-col lg="8">
+        <popular-today></popular-today>
+    </b-col>
+  </b-row>
 
-                <b-form-group
-                    label-cols-sm="3"
-                    label="Name:"
-                    label-align-sm="right"
-                    label-for="name"
-                >
-                    <b-form-input id="name" v-model="name" class="mayusculas"></b-form-input>
-                </b-form-group>
-
-                <b-form-group
-                    label-cols-sm="3"
-                    label="Email"
-                    label-align-sm="right"
-                    label-for="email"
-                >
-                    <b-form-input id="email" v-model="email"></b-form-input>
-                </b-form-group>
-
-                <b-form-group
-                    label-cols-sm="3"
-                    label="Password:"
-                    label-align-sm="right"
-                    label-for="password"
-                >
-                    <b-form-input type="password" v-model="clave" id="password"></b-form-input>
-                </b-form-group>
-
-                <b-form-group
-                    label-cols-sm="3"
-                    label="Imagen de perfil:"
-                    label-align-sm="right"
-                    label-for="photoURL"
-                >
-                    <b-form-input id="photoURL" v-model="photoURL"></b-form-input><br>
-                    <p class="small">Recomendamos usar <a href="https://es.gravatar.com/">Gravatar</a> para desplegar imágenes de perfil.</p>
-                </b-form-group>
-
-                
-                </b-form-group>
-            </b-card>
-            </div>
-
- <div id="franjasaludo" class="morado text-white">
-
-
-        <p @click="saludo"> Saludar en el console log </p>
-        <h1 class="hola" v-html="hola"></h1>
-        <b-img :src="Uri" rounded="circle" alt="algo"/> <span>Foto en Firebase, desde el Mounted - el gravatar de 200px importado en la creacion de usuario</span> 
-        <br><br>
-        <b-avatar :src="Uri" /> <span>Avatar bootstrap desde foto firebase (1rem)</span> 
-        <br><br>
-        <b-avatar :src="Uri" rounded style="font-size: 4rem;"></b-avatar> <span>Avatar bootstrap en firebase, avatar rounded 4rem</span> 
-        </div>
- -->
-
+        </b-container>
 
         
 
-
-    <usercard></usercard>
-    <popular-today></popular-today>
-    <usermodal></usermodal>
 
     </div>
     
@@ -86,7 +25,6 @@
 <script>
 import PopularToday from '../components/PopularToday';
 import Usercard from '../components/Usercard';
-import Usermodal from '../components/Usermodal';
 import firebase from 'firebase';
 import md5 from 'js-md5';
 //protected $appends = ['gravatar'];
@@ -97,8 +35,7 @@ export default {
     name: 'Tam',
     components: {
         PopularToday,
-        Usercard,
-        Usermodal
+        Usercard
         
     },
 

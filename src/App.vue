@@ -1,10 +1,7 @@
 <template>
   <div>
-      
     <!-- <Navegacion2></Navegacion2> -->
     <Navegacion></Navegacion>
-    
-    
     <router-view/>
     <Footer></Footer>
   </div>
@@ -24,15 +21,18 @@ export default {
     Footer,
   },
   mounted() {
-    /* firebase.auth().onAuthStateChanged(user=>{
+    firebase.auth().onAuthStateChanged(user=>{
       if (user) {
-        this.$store.dispatch('idUserLog',user.uid);
+        console.log("Usuario logueado")
+        this.$store.dispatch('idUserLog',user);
       }else{
         console.log("Salida de Usuario")
         this.$store.dispatch('idUserLog','');
       }
-    }) */
+    });
+    //this.$store.dispatch('activandoMutacionDB');
   },
+
 }
 </script>
 

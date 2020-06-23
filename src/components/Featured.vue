@@ -12,23 +12,31 @@
                 <b-card-text>
                 Publisher: {{ item.publisher }}, {{ item.year_published }} 
                 </b-card-text>
+                <b-button @click="callFavorites(item.id)">Add to Favorites</b-button>
             </b-card>
         </b-card-group> 
     </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+
 export default {
     name: 'Featured',
-    data() {
-        return {
-            gameArray: [],
+    methods: {
+        ...mapActions([
+            'callDataToFeature',
+            'callFavorites'
+        ]),
+
+    },
+    computed: {
+        gameArray() {
+            return this.$store.getters.showFeature;
         }
     },
     beforeMount: function () {
-        this.$store.dispatch('callDataToFeature');
-        this.gameArray = this.$store.getters.showFeature;
-        console.log(`This is an array`, this.gameArray);
+        this.callDataToFeature();
     }
 
 }

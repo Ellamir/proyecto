@@ -3,10 +3,10 @@
         
         
        
-  <!--
 
+<!--  
  <div>
-           <b-card bg-variant="light">
+            <b-card bg-variant="light">
                 <b-form-group >
 
                    
@@ -67,16 +67,36 @@
         <b-avatar :src="Uri" /> <span>Avatar bootstrap desde foto firebase (1rem)</span> 
         <br><br>
         <b-avatar :src="Uri" rounded style="font-size: 4rem;"></b-avatar> <span>Avatar bootstrap en firebase, avatar rounded 4rem</span> 
-        </div>
- -->
+        </div>  -->
 
 
+
+     
+    <div class="container my-5">
+        <h2>User Profile</h2>
+        <div class="cuadroNaranjo"></div>
+        
+            <b-card title="Your account information" >
+                 <b-img center :src="photoURL" rounded="circle" alt="foto"></b-img>
+                
+                 <div class="center"><br>
+                <h3 center class="mayusculas center" v-html="name"></h3>
+                <p class="center" v-html="email"></p>
+                <br>           
+                <!-- <b-button @click="userRegister" my-5 class="ml-auto boton1">Actualizar</b-button> -->
+                <b-button @click="verColeccion" my-5 mx-auto class="center boton1">My game collection</b-button>
+                </div>
+                
+     
+            </b-card>
+        
+    </div>
+
+
+
+  
         
 
-
-    <usercard></usercard>
-    <popular-today></popular-today>
-    <usermodal></usermodal>
 
     </div>
     
@@ -84,22 +104,17 @@
 </template>
 
 <script>
-import PopularToday from '../components/PopularToday';
-import Usercard from '../components/Usercard';
-import Usermodal from '../components/Usermodal';
+
 import firebase from 'firebase';
-import md5 from 'js-md5';
+//import md5 from 'js-md5';
 //protected $appends = ['gravatar'];
 
 
 export default {
     
-    name: 'Tam',
+    name: 'Usercard',
     components: {
-        PopularToday,
-        Usercard,
-        Usermodal
-        
+       
     },
 
     data() {
@@ -118,7 +133,7 @@ export default {
     },
 
 
-    mounted() {
+    beforeMount() {
       if (this.$store.state.uidUser) {
           var user = firebase.auth().currentUser;
           //var name, email, photoUrl, uid, Uri;
@@ -135,21 +150,6 @@ export default {
 
 
 
-
-                    //   db.collection(this.$store.state.uidUser).get().then(resp=>{
-                    //       var aux = [];
-                    //       resp.forEach(elemt=>{
-                    //           aux.push({
-                    //             id: elemt.data().id,
-                    //             last_name: elemt.data().last_name,
-                    //             first_name: elemt.data().first_name,
-                    //             avatar: elemt.data().avatar,
-                    //             email: elemt.data().email,
-                    //             idDoc: elemt.id,
-                    //             favorito: elemt.data().favorito
-                    //           })
-                    //       });
-                    //       this.datosFavoritos = aux;})
             }else{
                 this.$router.push('/access');
             }
@@ -157,61 +157,42 @@ export default {
 
     
     
-    methods: {
-    saludo(){
-            var user = firebase.auth().currentUser;
-            console.log('desde Firebase:',user.displayName);
-            console.log('desde Firebase:',user.photoURL);
-            console.log(user.email);
-            var gravatar = md5(user.email);
-            console.log('email en md5',gravatar);
-            let URL = "https://secure.gravatar.com/avatar/"+gravatar+"?s=200&d=mp";
-            this.gravatarURL=URL;
-            let nombre = (user.displayName)  // capitalizar nombre depende de CSS o arreglar el input
-            let foto = (user.photoURL) 
-            this.foto = foto
-            this.hola="Hola "+nombre;
-            }
- 
-    },
     
-    //     filters:{
-    //  upper(str){
-    //    str = str.toLowerCase().split(' ');
-
-    //    let final = [ ];
-
-    //     for(let  word of str){
-    //       final.push(word.charAt(0).toUpperCase()+ word.slice(1));
-    //     }
-
-    //   return final.join(' ')      
-    //     }
-    //   },
-        
-
-
-
     
 }
 
 </script>
 
 <style lang="scss" scoped>
-
-.morado{
-        background-color: #6a1b9a;
-        text-decoration-color: #FFF;
-        
+h2 {
+    border-bottom: 1px solid #727272;
+    margin-bottom: 0;
 }
-.mejorlogin {
-          text-decoration-color: #FFF;
-        }
+.cuadroNaranjo {
+    margin-bottom: 1rem;
+    
+    &:after{
+        content: " ";
+        display: block;
+        height: 6px;
+        max-width: 55px;
+        background: #EC8E4C;
+    }
+}
 
 .mayusculas { text-transform: capitalize; }
 
-.small{
-        color: #38006b;
-        font-size: 13px;
+.boton1 {
+    color:#FFF;
+    background:#FFA040;
+    }
+    .boton1:hover {
+    color:#FFF;
+    background:#EC8E4C;
+    
+    }
+.center {
+    text-align: center;
 }
-</style> 
+
+</style>
