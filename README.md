@@ -30,7 +30,7 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
        - [x]  8.a Pantalla de inicio sin login (Presentación y resumen, incluyendo cuántos 
         juegos hay en la biblioteca y cuántos usuarios registrados)
        - [x]  8.b. Pantalla de Login
-      - [ ]   8.c Pantalla Principal que muestre los datos obtenidos de la API
+      - [x]   8.c Pantalla Principal que muestre los datos obtenidos de la API
       - [ ]   8.d Pantalla que muestre la lista personal de juegos. (Firebase)
   - [ ]   9. Se debe poder filtrar por nombre/editorial o palabras clave
   - [ ]   10. Mostrar las imágenes como libros en una repisa y al hacer click traer la info.
@@ -43,6 +43,8 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
 ## Diseño Preliminar
 
 ![Home](http://dragon.cl/portafolio/ludoteca/index.png)
+
+![Profile](http://dragon.cl/portafolio/ludoteca/profile.png)
 
 ![Artboard](http://dragon.cl/portafolio/ludoteca/artboard.png)
 

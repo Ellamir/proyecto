@@ -47,6 +47,7 @@ export default new Vuex.Store({
     },
     dataToRandomFeature(state,randomGame) 
     {
+      state.randomFeature = [],
       state.randomFeature.push(randomGame);
     },
     dataToPopularToday(state,popularGame)
@@ -69,7 +70,9 @@ export default new Vuex.Store({
       let callRandom = 'random=true';
 
       async function apiRes () {
-        const getRandom = await (await apiCall(callRandom)).data.game;
+        const getRandom = await (
+          await apiCall(callRandom)
+        ).data.game;
         context.commit('dataToRandomHero', getRandom);
       }
       apiRes()
@@ -81,7 +84,9 @@ export default new Vuex.Store({
       const apiRes = async () => {
         for(let i = 0; i < 4; i++) 
         {
-          const getRandom = await (await apiCall(callRandom)).data.game;
+          const getRandom = await (
+            await apiCall(callRandom)
+          ).data.game;
           context.commit('dataToRandomFeature',getRandom);
         }
       }
@@ -92,8 +97,9 @@ export default new Vuex.Store({
       let callPopular = 'order_by=popularity';
 
       const apiRes = async () => {
-        const getPopular = await (await apiCall(callPopular)).data.games[0];
-        console.log(getPopular);
+        const getPopular = await (
+          await apiCall(callPopular)
+        ).data.games[0];
         context.commit('dataToPopularToday', getPopular);
       }
 

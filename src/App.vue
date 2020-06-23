@@ -1,11 +1,8 @@
 <template>
   <div>
-      
     <!-- <Navegacion2></Navegacion2> -->
     <Navegacion></Navegacion>
-        
-    <router-view></router-view>
-
+    <router-view/>
     <Footer></Footer>
   </div>
 </template>
