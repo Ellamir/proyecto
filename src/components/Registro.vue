@@ -146,7 +146,7 @@ export default {
                             this.clave = '';
                             this.userOk = '';
                             this.error = '';
-                            this.$router.push('/tam');  //pasa directo a perfil
+                            this.$router.push('/profile');  //pasa directo a perfil
                           },2000);
                         
                     })

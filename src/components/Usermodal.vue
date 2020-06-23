@@ -3,10 +3,10 @@
         
         
        
-  <!--
+
 
  <div>
-           <b-card bg-variant="light">
+            <b-card bg-variant="light">
                 <b-form-group >
 
                    
@@ -68,15 +68,18 @@
         <br><br>
         <b-avatar :src="Uri" rounded style="font-size: 4rem;"></b-avatar> <span>Avatar bootstrap en firebase, avatar rounded 4rem</span> 
         </div>
- -->
 
 
+
+        <div>
+            <usercard></usercard>
+
+            </div>
+
+
+    <popular-today></popular-today>
         
 
-
-    <usercard></usercard>
-    <popular-today></popular-today>
-    <usermodal></usermodal>
 
     </div>
     
@@ -86,7 +89,6 @@
 <script>
 import PopularToday from '../components/PopularToday';
 import Usercard from '../components/Usercard';
-import Usermodal from '../components/Usermodal';
 import firebase from 'firebase';
 import md5 from 'js-md5';
 //protected $appends = ['gravatar'];
@@ -94,11 +96,10 @@ import md5 from 'js-md5';
 
 export default {
     
-    name: 'Tam',
+    name: 'Usermodal',
     components: {
         PopularToday,
-        Usercard,
-        Usermodal
+        Usercard
         
     },
 

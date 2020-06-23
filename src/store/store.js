@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
 import { apiCall } from '../config/conexionApi'
 
 Vue.use(Vuex)
@@ -61,7 +62,7 @@ export default new Vuex.Store({
       context.commit('agregandoId',dataUsuarioRecibido);
     },
 
-
+    
 
 
 

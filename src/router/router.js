@@ -32,6 +32,12 @@ Vue.use(VueRouter)
     component: () => import('../views/Tam.vue'),
   },
 
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue'),
+  },
+
   //  {                               Así deberia ser el flujo al apretar el perfil de usuario pero no funca
   //   path: '/perfil',
   //    component: () => import('../views/Perfil.vue'),
