@@ -123,7 +123,7 @@ export default {
     
     beforeMount: function () {
         this.$store.actions.accionarDB();
-        this.$store.a
+        this.$store.actions.revisarDB();
     },
     mounted() {
       if (this.$store.state.uidUser) {
@@ -183,13 +183,13 @@ export default {
         //          let argumento = firebase.auth().currentUser.uid
         //          console.log(argumento)
         //          console.log(crearDocs)
-        //          firebase.firestore().collection("Ludoteca").doc(argumento).child("My Game Collection").push({ gameFav : true });
+        //          firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").doc(crearDocs).set({ gameFav : true });
         //         });
         // },
 
         //  revisar(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
         //     let argumento = firebase.auth().currentUser.uid 
-        //     firebase.firestore().collection("Ludoteca").doc(argumento).child("My Game Collection").get().then(function(querySnapshot) {
+        //     firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").doc(crearDocs).get().then(function(querySnapshot) {
         //     querySnapshot.forEach(function(doc) {
         //     // doc.data() is never undefined for query doc snapshots
         //     console.log(doc.id, " => ", doc.data());
@@ -197,7 +197,7 @@ export default {
         //     });
         // }
 
-        // esto debe funcionar como minimo
+        // funciona tambien !!! esta 
 
         accionarDB(){  // crear documentos con ID's = array myFavs
                 
@@ -205,16 +205,18 @@ export default {
                  let argumento = firebase.auth().currentUser.uid
                  console.log(argumento)
                  console.log(crearDocs)
-                 firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
+                 firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").doc(crearDocs).set({ gameFav : true });
                 });
         },
          revisarDB(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
             let argumento = firebase.auth().currentUser.uid 
-            firebase.firestore().collection(argumento).get().then(function(querySnapshot) {
-            console.log(querySnapshot.docs)
+            firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").get().then(function(querySnapshot) {
+            //console.log(querySnapshot.docs[0].id) 
+            let favArray = []            
             querySnapshot.forEach(function(doc) {
-                console.log(querySnapshot.docs.id)
-            // doc.data() is never undefined for query doc snapshots
+                favArray.push(doc.id)
+                console.log(favArray)
+            // esto me trae todos pero de a uno, me falta traerlo como un array limpio
             console.log(doc.id, " => ", doc.data());
             
             });
@@ -239,19 +241,29 @@ export default {
  
     },
     
-    //     filters:{
-    //  upper(str){
-    //    str = str.toLowerCase().split(' ');
-
-    //    let final = [ ];
-
-    //     for(let  word of str){
-    //       final.push(word.charAt(0).toUpperCase()+ word.slice(1));
+    // LA QUE SI FUNCIONA!! / accionarDB(){  // crear documentos con ID's = array myFavs
+                
+    //             this.myFavs.forEach(crearDocs => {
+    //              let argumento = firebase.auth().currentUser.uid
+    //              console.log(argumento)
+    //              console.log(crearDocs)
+    //              firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
+    //             });
+    //     },
+    //      revisarDB(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
+    //         let argumento = firebase.auth().currentUser.uid 
+    //         firebase.firestore().collection(argumento).get().then(function(querySnapshot) {
+    //         //console.log(querySnapshot.docs[0].id) 
+    //         let favArray = []            
+    //         querySnapshot.forEach(function(doc) {
+    //             favArray.push(doc.id)
+    //             console.log(favArray)
+    //         // esto me trae todos pero de a uno, me falta traerlo como un array limpio
+    //         console.log(doc.id, " => ", doc.data());
+            
+    //         });
+    //         });
     //     }
-
-    //   return final.join(' ')      
-    //     }
-    //   },
         
 
 

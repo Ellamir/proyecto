@@ -158,17 +158,23 @@ export default new Vuex.Store({
                  let argumento = firebase.auth().currentUser.uid
                  console.log(argumento)
                  console.log(crearDocs)
-                 firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
+                 firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").doc(crearDocs).set({ gameFav : true });
                 });
         },
-         revisarDB(){  // trae todos los documentos (ID juegos) y propiedad (siempre son fav true en este caso)
+         revisarDB(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
             let argumento = firebase.auth().currentUser.uid 
-            firebase.firestore().collection(argumento).get().then(function(querySnapshot) {
+            firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").get().then(function(querySnapshot) {
+            //console.log(querySnapshot.docs[0].id) 
+            let favArray = []            
             querySnapshot.forEach(function(doc) {
-            // esto es lo que probablemente hay que transformar en un array para desplegar librero
+                favArray.push(doc.id)
+                console.log(favArray)
+            // favArray es el que debe pasar a myFavs
+            
             console.log(doc.id, " => ", doc.data());
+            
             });
             });
-        },
+        }
     }
 })
