@@ -18,7 +18,7 @@ export default new Vuex.Store({
             randomFeature: [],
             featuredQuantity: 4,
             popularToday:{},
-            myFavs:['']
+            myFavs:[]
     },
     getters: {
         showHeroIMG(state) 
@@ -120,16 +120,15 @@ export default new Vuex.Store({
         {
             if(!this.getters.isFavorite(id))
             {
-                context.commit('addToFavorites', id);
-                firebase.firestore().collection(firebase.auth().currentUser).set({
-                  id: "this.$store.myFavs.gameID",
-                }).then(()=>{
-                  console.log("Agregado a favorito");
-                  let cambioFav = this.$store.state.myFavs.filter(item => item.id === this.$store.myFavs.gameID)
-                  console.log(cambioFav);
-                  cambioFav.favorito = true;
-                  console.log(this.$store.state.myFavs)
-                }).catch(err => console.error(err))
+                const saveGame = gID => {
+                    let uID = firebase.auth().currentUser.uid
+                    firebase.firestore().collection("Ludoteca")
+                        .doc(uID).collection("My Game Collection")
+                            .doc(gID).set({ gameFav : true });
+                }
+
+                saveGame(id);
+                context.dispatch('revisarDB');
             }
             else
             {
@@ -155,28 +154,28 @@ export default new Vuex.Store({
 
             return apiRes();
         },
-        accionarDB(context){  // crear documentos con ID's = array myFavs
-                
-                context.state.myFavs.forEach(crearDocs => {
-                 let argumento = firebase.auth().currentUser.uid
-                 console.log(argumento)
-                 console.log(crearDocs)
-                 firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").doc(crearDocs).set({ gameFav : true });
+         revisarDB(context){  
+            let firebaseAuth = firebase.auth();
+            console.log('El firebase auth', firebaseAuth);
+
+            let currentUser = this.state.uidUser;
+            console.log('El current user', currentUser);
+
+            let uID = firebase.auth().currentUser.uid   // documento corresponde al ID del usuario
+            console.log('El uID',uID)
+
+            firebase.firestore().collection("Ludoteca")
+                .doc(uID).collection("My Game Collection")
+                .get().then(function(querySnapshot) {
+                    let favArray = []       
+
+                    querySnapshot.forEach(function(doc) {
+                        favArray.push(doc.id)
+                    // favArray es el que debe pasar a myFavs
+                    });
+
+                    context.commit("pasandoFavs", favArray)
                 });
-        },
-         revisarDB(context){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son gameFav : true)
-            let argumento = firebase.auth().currentUser.uid   // documento corresponde al ID del usuario
-            firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").get().then(function(querySnapshot) {
-            let favArray = []            
-            querySnapshot.forEach(function(doc) {
-                favArray.push(doc.id)
-                console.log(favArray)
-            // favArray es el que debe pasar a myFavs
-            //console.log(doc.id, " => ", doc.data());
-            
-            });
-            context.commit("pasandoFavs", favArray)
-            });
         }
     }
 })
