@@ -161,11 +161,11 @@ export default new Vuex.Store({
                  firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
                 });
         },
-         revisarDB(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
+         revisarDB(){  // trae todos los documentos (ID juegos) y propiedad (siempre son fav true en este caso)
             let argumento = firebase.auth().currentUser.uid 
             firebase.firestore().collection(argumento).get().then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
+            // esto es lo que probablemente hay que transformar en un array para desplegar librero
             console.log(doc.id, " => ", doc.data());
             });
             });

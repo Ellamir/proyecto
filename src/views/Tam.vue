@@ -70,8 +70,8 @@
         </div>
  -->
 
-<p @click="accionar"> Click para accionar </p>
-<p @click="revisar"> Click para accionar </p>
+<p @click="accionarDB"> Click para accionarDB </p>
+<p @click="revisarDB"> Click para revisarDB </p>
        
 
 <!-- 
@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 // import PopularToday from '../components/PopularToday';
 // import Usercard from '../components/Usercard';
 // import Usermodal from '../components/Usermodal';
@@ -119,7 +120,11 @@ export default {
             }
     },
 
-
+    
+    beforeMount: function () {
+        this.$store.actions.accionarDB();
+        this.$store.a
+    },
     mounted() {
       if (this.$store.state.uidUser) {
           var user = firebase.auth().currentUser;
@@ -159,6 +164,11 @@ export default {
 
     // myFavs: ['patito','patata'] estos fueron probados localmente primero 
     
+     ...mapActions([
+            'accionarDB',
+            'revisarDB'
+        ]),
+
     computed: {
     myFavs() {
       return this.$store.state.myFavs;
@@ -189,7 +199,7 @@ export default {
 
         // esto debe funcionar como minimo
 
-        accionar(){  // crear documentos con ID's = array myFavs
+        accionarDB(){  // crear documentos con ID's = array myFavs
                 
                 this.myFavs.forEach(crearDocs => {
                  let argumento = firebase.auth().currentUser.uid
@@ -198,12 +208,15 @@ export default {
                  firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
                 });
         },
-         revisar(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
+         revisarDB(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
             let argumento = firebase.auth().currentUser.uid 
             firebase.firestore().collection(argumento).get().then(function(querySnapshot) {
+            console.log(querySnapshot.docs)
             querySnapshot.forEach(function(doc) {
+                console.log(querySnapshot.docs.id)
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
+            
             });
             });
         }

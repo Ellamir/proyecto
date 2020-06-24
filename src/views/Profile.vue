@@ -14,7 +14,7 @@
 
         </b-container>
 
-        
+        <my-games :ids="this.showFavs"></my-games>
 
 
     </div>
@@ -27,7 +27,9 @@ import PopularToday from '../components/PopularToday';
 import Usercard from '../components/Usercard';
 import firebase from 'firebase';
 import md5 from 'js-md5';
-//protected $appends = ['gravatar'];
+import MyGames from '../components/MyGames';
+import { mapGetters } from 'vuex';
+
 
 
 export default {
@@ -35,8 +37,8 @@ export default {
     name: 'Profile',
     components: {
         PopularToday,
-        Usercard
-        
+        Usercard,
+        MyGames
     },
 
     data() {
@@ -54,6 +56,11 @@ export default {
             }
     },
 
+    computed: {
+        ...mapGetters([
+            'showFavs'
+        ])
+    },
 
     mounted() {
       if (this.$store.state.uidUser) {
