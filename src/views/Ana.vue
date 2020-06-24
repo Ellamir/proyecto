@@ -20,7 +20,11 @@ export default {
     computed: {
         ...mapGetters([
             'showFavs'
-        ])
+        ]),
+    },
+    beforeMount: function() 
+    {
+        this.$store.dispatch('revisarDB');
     }
 }
 </script>
