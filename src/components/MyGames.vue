@@ -1,9 +1,9 @@
 <template>
-    <div class="container my-5">
+    <b-container>
         <h2>My Library</h2>
         <div class="cuadroNaranjo"></div>
         <b-card-group deck>
-            <b-card v-for="(item, index) in favs" :key="index"
+            <b-card v-for="(item, index) in currPageFavs" :key="index"
                 :title="item.name"
                 :img-src="item.images.small"
                 :img-alt="item.name"
@@ -14,7 +14,16 @@
                 </b-card-text>
             </b-card>
         </b-card-group>
-    </div>
+        <b-row>
+            <b-col md="6" class="my-1">
+                <b-pagination 
+                    v-model="currentPage" 
+                    :total-rows="totalRows" 
+                    :per-page="perPage" 
+                ></b-pagination>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
@@ -26,6 +35,20 @@ export default {
         ids: {
             type: Array,
             required: true,
+        },
+        perPage: {
+            type: Number,
+            default: 4,
+        }
+    },
+    data() {
+        return {
+            favs:[],
+            currentPage: 1,
+            totalRows: 0,
+            paginated_items: {},
+            currentPageIndex:0,
+            nbPages:0
         }
     },
     watch: {
@@ -36,7 +59,7 @@ export default {
                this.bringFavorites(this.ids).then(
                     (result)=>{
                         this.favs = result;
-                    })
+                            this.totalRows = this.favs.length;
             }
         }
     },
@@ -51,7 +74,18 @@ export default {
     methods:{
         ...mapActions([
             'bringFavorites',
-        ])
+        ]),
+    },
+    computed: {
+        pageCount() {
+        return Math.ceil(this.totalRows / this.perPage);
+        },
+        currPageFavs() {
+            let start = (this.currentPage - 1) * this.perPage;
+            let end = start + this.perPage; 
+
+            return this.favs.slice(start, end);
+        },
     },
 }
 </script>
