@@ -32,7 +32,7 @@ import md5 from 'js-md5';
 
 export default {
     
-    name: 'Tam',
+    name: 'Profile',
     components: {
         PopularToday,
         Usercard

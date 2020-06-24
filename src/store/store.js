@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import { apiCall } from '../config/conexionApi'
+//import { db } from "../main";
+import firebase from 'firebase';
 
 Vue.use(Vuex)
 
@@ -16,7 +18,8 @@ export default new Vuex.Store({
             randomFeature: [],
             featuredQuantity: 4,
             popularToday:{},
-            myFavs:[],
+            myFavs:['kPDxpJZ8PD', 'i5Oqu5VZgP'],
+            
     },
     getters: {
         showHeroIMG(state) 
@@ -116,6 +119,15 @@ export default new Vuex.Store({
             if(!this.getters.isFavorite(id))
             {
                 context.commit('addToFavorites', id);
+                firebase.firestore().collection(firebase.auth().currentUser).set({
+                  id: "this.$store.myFavs.gameID",
+                }).then(()=>{
+                  console.log("Agregado a favorito");
+                  let cambioFav = this.$store.state.myFavs.filter(item => item.id === this.$store.myFavs.gameID)
+                  console.log(cambioFav);
+                  cambioFav.favorito = true;
+                  console.log(this.$store.state.myFavs)
+                }).catch(err => console.error(err))
             }
             else
             {

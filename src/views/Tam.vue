@@ -60,7 +60,7 @@
  <div id="franjasaludo" class="morado text-white">
 
 
-        <p @click="saludo"> Saludar en el console log </p>
+        
         <h1 class="hola" v-html="hola"></h1>
         <b-img :src="Uri" rounded="circle" alt="algo"/> <span>Foto en Firebase, desde el Mounted - el gravatar de 200px importado en la creacion de usuario</span> 
         <br><br>
@@ -70,13 +70,14 @@
         </div>
  -->
 
+<p @click="accionar"> Click para accionar </p>
+<p @click="revisar"> Click para accionar </p>
+       
 
-        
-
-
+<!-- 
     <usercard></usercard>
     <popular-today></popular-today>
-    <usermodal></usermodal>
+    <usermodal></usermodal> -->
 
     </div>
     
@@ -84,11 +85,11 @@
 </template>
 
 <script>
-import PopularToday from '../components/PopularToday';
-import Usercard from '../components/Usercard';
-import Usermodal from '../components/Usermodal';
+// import PopularToday from '../components/PopularToday';
+// import Usercard from '../components/Usercard';
+// import Usermodal from '../components/Usermodal';
 import firebase from 'firebase';
-import md5 from 'js-md5';
+// import md5 from 'js-md5';
 //protected $appends = ['gravatar'];
 
 
@@ -96,9 +97,9 @@ export default {
     
     name: 'Tam',
     components: {
-        PopularToday,
-        Usercard,
-        Usermodal
+        //PopularToday,
+        //Usercard,
+        //Usermodal
         
     },
 
@@ -114,6 +115,7 @@ export default {
             photoUrl: '', 
             uid: '',
             clave: '',
+            //myFavs: []
             }
     },
 
@@ -155,23 +157,60 @@ export default {
             }
   },
 
+    // myFavs: ['patito','patata'] estos fueron probados localmente primero 
     
-    
+    computed: {
+    myFavs() {
+      return this.$store.state.myFavs;
+      
+    },
+    },
     methods: {
-    saludo(){
-            var user = firebase.auth().currentUser;
-            console.log('desde Firebase:',user.displayName);
-            console.log('desde Firebase:',user.photoURL);
-            console.log(user.email);
-            var gravatar = md5(user.email);
-            console.log('email en md5',gravatar);
-            let URL = "https://secure.gravatar.com/avatar/"+gravatar+"?s=200&d=mp";
-            this.gravatarURL=URL;
-            let nombre = (user.displayName)  // capitalizar nombre depende de CSS o arreglar el input
-            let foto = (user.photoURL) 
-            this.foto = foto
-            this.hola="Hola "+nombre;
-            }
+
+         accionar(){  // crear documentos con ID's = array myFavs
+                
+                this.myFavs.forEach(crearDocs => {
+                 let argumento = firebase.auth().currentUser.uid
+                 console.log(argumento)
+                 console.log(crearDocs)
+                 firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
+                });
+        },
+
+         revisar(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
+            let argumento = firebase.auth().currentUser.uid 
+            firebase.firestore().collection(argumento).get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            });
+            });
+        }
+
+        // esto debe funcionar
+
+        //  this.myFavs.forEach(crearDocs => {
+        //          var argumento = firebase.auth().currentUser.uid
+        //          console.log(argumento)
+        //          console.log(crearDocs)
+        //          firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
+        //       });
+
+
+    // saludo(){
+    //         var user = firebase.auth().currentUser;
+    //         console.log('desde Firebase:',user.displayName);
+    //         console.log('desde Firebase:',user.photoURL);
+    //         console.log(user.email);
+    //         var gravatar = md5(user.email);
+    //         console.log('email en md5',gravatar);
+    //         let URL = "https://secure.gravatar.com/avatar/"+gravatar+"?s=200&d=mp";
+    //         this.gravatarURL=URL;
+    //         let nombre = (user.displayName)  // capitalizar nombre depende de CSS o arreglar el input
+    //         let foto = (user.photoURL) 
+    //         this.foto = foto
+    //         this.hola="Hola "+nombre;
+    //         }
  
     },
     

@@ -60,7 +60,7 @@ export default {
           this.userOk = 'Usuario correcto';
           setTimeout(()=>{
             this.userOk = '';
-            this.$router.push('/profile');    // pasa a vista de usuario
+            this.$router.push('/tam');    // pasa a vista de usuario
           },1000);
           this.password = '';
           this.email = '';
