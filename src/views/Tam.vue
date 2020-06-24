@@ -86,13 +86,12 @@
 
 <script>
 import {mapActions} from 'vuex';
-// import PopularToday from '../components/PopularToday';
-// import Usercard from '../components/Usercard';
-// import Usermodal from '../components/Usermodal';
 import firebase from 'firebase';
 // import md5 from 'js-md5';
 //protected $appends = ['gravatar'];
-
+// import PopularToday from '../components/PopularToday';
+// import Usercard from '../components/Usercard';
+// import Usermodal from '../components/Usermodal';
 
 export default {
     
@@ -164,10 +163,7 @@ export default {
 
     // myFavs: ['patito','patata'] estos fueron probados localmente primero 
     
-     ...mapActions([
-            'accionarDB',
-            'revisarDB'
-        ]),
+     
 
     computed: {
     myFavs() {
@@ -176,6 +172,19 @@ export default {
     },
     },
     methods: {
+
+
+        
+        ...mapActions([
+            'accionarDB',
+            'revisarDB'
+        ]),
+
+
+    },
+
+
+
         // // NO FUNCIONA version 2 para meter los favs como nueva coleccion dentro del documento My Collecion
         //  accionar(){  // crear documentos con ID's = array myFavs
                 
@@ -199,29 +208,29 @@ export default {
 
         // funciona tambien !!! esta 
 
-        accionarDB(){  // crear documentos con ID's = array myFavs
+        // accionarDB(){  // crear documentos con ID's = array myFavs
                 
-                this.myFavs.forEach(crearDocs => {
-                 let argumento = firebase.auth().currentUser.uid
-                 console.log(argumento)
-                 console.log(crearDocs)
-                 firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").doc(crearDocs).set({ gameFav : true });
-                });
-        },
-         revisarDB(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
-            let argumento = firebase.auth().currentUser.uid 
-            firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").get().then(function(querySnapshot) {
-            //console.log(querySnapshot.docs[0].id) 
-            let favArray = []            
-            querySnapshot.forEach(function(doc) {
-                favArray.push(doc.id)
-                console.log(favArray)
-            // esto me trae todos pero de a uno, me falta traerlo como un array limpio
-            console.log(doc.id, " => ", doc.data());
+        //         this.myFavs.forEach(crearDocs => {
+        //          let argumento = firebase.auth().currentUser.uid
+        //          console.log(argumento)
+        //          console.log(crearDocs)
+        //          firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").doc(crearDocs).set({ gameFav : true });
+        //         });
+        // },
+        //  revisarDB(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
+        //     let argumento = firebase.auth().currentUser.uid 
+        //     firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").get().then(function(querySnapshot) {
+        //     //console.log(querySnapshot.docs[0].id) 
+        //     let favArray = []            
+        //     querySnapshot.forEach(function(doc) {
+        //         favArray.push(doc.id)
+        //         console.log(favArray)
+        //     // esto me trae todos pero de a uno, me falta traerlo como un array limpio
+        //     console.log(doc.id, " => ", doc.data());
             
-            });
-            });
-        }
+        //     });
+        //     });
+        // }
 
 
     // saludo(){
@@ -239,7 +248,7 @@ export default {
     //         this.hola="Hola "+nombre;
     //         }
  
-    },
+    // },
     
     // LA QUE SI FUNCIONA!! / accionarDB(){  // crear documentos con ID's = array myFavs
                 

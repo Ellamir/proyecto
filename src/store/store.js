@@ -18,7 +18,7 @@ export default new Vuex.Store({
             randomFeature: [],
             featuredQuantity: 4,
             popularToday:{},
-            myFavs:[]
+            myFavs:['']
     },
     getters: {
         showHeroIMG(state) 
@@ -69,6 +69,9 @@ export default new Vuex.Store({
         agregandoId(state,idRecibido){
           state.uidUser = idRecibido;
         },
+        pasandoFavs(state, favArray){
+            state.myFavs = favArray;
+        }
     },
     actions: {
         callDataToHero(context) 
@@ -152,28 +155,27 @@ export default new Vuex.Store({
 
             return apiRes();
         },
-        accionarDB(){  // crear documentos con ID's = array myFavs
+        accionarDB(context){  // crear documentos con ID's = array myFavs
                 
-                this.myFavs.forEach(crearDocs => {
+                context.state.myFavs.forEach(crearDocs => {
                  let argumento = firebase.auth().currentUser.uid
                  console.log(argumento)
                  console.log(crearDocs)
                  firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").doc(crearDocs).set({ gameFav : true });
                 });
         },
-         revisarDB(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
-            let argumento = firebase.auth().currentUser.uid 
+         revisarDB(context){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son gameFav : true)
+            let argumento = firebase.auth().currentUser.uid   // documento corresponde al ID del usuario
             firebase.firestore().collection("Ludoteca").doc(argumento).collection("My Game Collection").get().then(function(querySnapshot) {
-            //console.log(querySnapshot.docs[0].id) 
             let favArray = []            
             querySnapshot.forEach(function(doc) {
                 favArray.push(doc.id)
                 console.log(favArray)
             // favArray es el que debe pasar a myFavs
-            
-            console.log(doc.id, " => ", doc.data());
+            //console.log(doc.id, " => ", doc.data());
             
             });
+            context.commit("pasandoFavs", favArray)
             });
         }
     }
