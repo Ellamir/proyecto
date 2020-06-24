@@ -28,3 +28,4 @@ src/config/firebaseConfig.js
 src/components/Prueba.vue
 src/store/prueba.js
 src/store/prueba.js
+src/config/conexionApi.js
