@@ -56,20 +56,21 @@ export default {
             immediate: true, 
             handler()
             {
-               this.bringFavorites(this.ids).then(
-                    (result)=>{
-                        this.favs = result;
+                if(this.ids.length > 0)
+                {
+                    this.bringFavorites(this.ids).then(
+                        (result)=>{
+                            this.favs = result;
                             this.totalRows = this.favs.length;
+                        }
+                    ).catch(
+                        (error)=> {
+                            console.log(error);
+                        }
+                    )
+                }
             }
         }
-    },
-    data() {
-        return {
-            favs:[]
-        }
-    },
-    updated() {
-       
     },
     methods:{
         ...mapActions([
@@ -86,7 +87,7 @@ export default {
 
             return this.favs.slice(start, end);
         },
-    },
+  },
 }
 </script>
 
