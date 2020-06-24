@@ -73,6 +73,7 @@
 <script>
 import firebase from 'firebase';
 import md5 from 'js-md5';
+//import { db } from "../main";
 
 export default {
     name: 'Registro',
@@ -122,6 +123,7 @@ export default {
               else {
               this.error = '';
                 firebase.auth().createUserWithEmailAndPassword(this.correo, this.clave).then(response=>{
+                  
                     console.log(response.user)
                     var user = firebase.auth().currentUser;
                     var gravatar = md5(user.email);
