@@ -14,7 +14,7 @@ export default new Vuex.Store({
             randomFeature: [],
             featuredQuantity: 4,
             popularToday:{},
-            myFavs:[],
+            myFavs:[]
     },
     getters: {
         showHeroIMG(state) 
@@ -39,7 +39,7 @@ export default new Vuex.Store({
             {
                 return state.myFavs.includes(gameID);
             }
-        },
+        }
     },
     mutations: {
         dataToRandomHero(state,random) 
@@ -117,5 +117,20 @@ export default new Vuex.Store({
                 console.log(`El ID ${id} ya está registrado`)
             }
         },
+        bringFavorites(context, gameIDs)
+        {
+            console.log('Game IDs: ',gameIDs);
+            let favorites = `ids=${gameIDs}`;
+
+            const apiRes = async () => {
+                const getFavs = await (
+                    await apiCall(favorites)
+                ).data.games;
+                console.log('Esto es getFavs',getFavs)
+                return getFavs;
+            }
+
+            return apiRes();
+        }
     }
 })

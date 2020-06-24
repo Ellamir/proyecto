@@ -1,20 +1,26 @@
 <template>
     <div>
-        <popular-today></popular-today>
         <featured></featured>
+        <my-games :ids="this.showFavs"></my-games>
 
     </div>
 </template>
 
 <script>
-import PopularToday from '../components/PopularToday';
-import Featured from '../components/Featured'
+import Featured from '../components/Featured';
+import MyGames from '../components/MyGames'
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'Ana-Test',
     components: {
-        PopularToday,
         Featured,
+        MyGames
+    },
+    computed: {
+        ...mapGetters([
+            'showFavs'
+        ])
     }
 }
 </script>
