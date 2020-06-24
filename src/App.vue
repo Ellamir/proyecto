@@ -11,7 +11,7 @@
 import Navegacion from './components/Navegacion.vue';
 // import Navegacion2 from './components/Navegacion2.vue';
 import Footer from './components/Footer.vue';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 
 export default {
   name: 'App',
@@ -21,15 +21,18 @@ export default {
     Footer,
   },
   mounted() {
-    /* firebase.auth().onAuthStateChanged(user=>{
+    firebase.auth().onAuthStateChanged(user=>{
       if (user) {
-        this.$store.dispatch('idUserLog',user.uid);
+        console.log("Usuario logueado")
+        this.$store.dispatch('idUserLog',user);
       }else{
         console.log("Salida de Usuario")
         this.$store.dispatch('idUserLog','');
       }
-    }) */
+    });
+    //this.$store.dispatch('activandoMutacionDB');
   },
+
 }
 </script>
 

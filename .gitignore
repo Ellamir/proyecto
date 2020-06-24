@@ -24,4 +24,7 @@ pnpm-debug.log*
 *.sw?
 Ludoteca
 src/config/firebaseConfig.js
-README.md
+
+src/components/Prueba.vue
+src/store/prueba.js
+src/store/prueba.js
