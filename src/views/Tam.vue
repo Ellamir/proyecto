@@ -166,8 +166,30 @@ export default {
     },
     },
     methods: {
+        // // NO FUNCIONA version 2 para meter los favs como nueva coleccion dentro del documento My Collecion
+        //  accionar(){  // crear documentos con ID's = array myFavs
+                
+        //         this.myFavs.forEach(crearDocs => {
+        //          let argumento = firebase.auth().currentUser.uid
+        //          console.log(argumento)
+        //          console.log(crearDocs)
+        //          firebase.firestore().collection("Ludoteca").doc(argumento).child("My Game Collection").push({ gameFav : true });
+        //         });
+        // },
 
-         accionar(){  // crear documentos con ID's = array myFavs
+        //  revisar(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
+        //     let argumento = firebase.auth().currentUser.uid 
+        //     firebase.firestore().collection("Ludoteca").doc(argumento).child("My Game Collection").get().then(function(querySnapshot) {
+        //     querySnapshot.forEach(function(doc) {
+        //     // doc.data() is never undefined for query doc snapshots
+        //     console.log(doc.id, " => ", doc.data());
+        //     });
+        //     });
+        // }
+
+        // esto debe funcionar como minimo
+
+        accionar(){  // crear documentos con ID's = array myFavs
                 
                 this.myFavs.forEach(crearDocs => {
                  let argumento = firebase.auth().currentUser.uid
@@ -176,7 +198,6 @@ export default {
                  firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
                 });
         },
-
          revisar(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
             let argumento = firebase.auth().currentUser.uid 
             firebase.firestore().collection(argumento).get().then(function(querySnapshot) {
@@ -186,15 +207,6 @@ export default {
             });
             });
         }
-
-        // esto debe funcionar
-
-        //  this.myFavs.forEach(crearDocs => {
-        //          var argumento = firebase.auth().currentUser.uid
-        //          console.log(argumento)
-        //          console.log(crearDocs)
-        //          firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
-        //       });
 
 
     // saludo(){

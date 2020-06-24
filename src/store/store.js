@@ -18,8 +18,7 @@ export default new Vuex.Store({
             randomFeature: [],
             featuredQuantity: 4,
             popularToday:{},
-            myFavs:['kPDxpJZ8PD', 'i5Oqu5VZgP'],
-            
+            myFavs:[]
     },
     getters: {
         showHeroIMG(state) 
@@ -44,7 +43,7 @@ export default new Vuex.Store({
             {
                 return state.myFavs.includes(gameID);
             }
-        },
+        }
     },
     mutations: {
         dataToRandomHero(state,random) 
@@ -138,5 +137,38 @@ export default new Vuex.Store({
           context.commit('agregandoId',dataUsuarioRecibido);
         },
         
+        bringFavorites(context, gameIDs)
+        {
+            console.log('Game IDs: ',gameIDs);
+            let favorites = `ids=${gameIDs}`;
+
+            const apiRes = async () => {
+                const getFavs = await (
+                    await apiCall(favorites)
+                ).data.games;
+                console.log('Esto es getFavs',getFavs)
+                return getFavs;
+            }
+
+            return apiRes();
+        },
+        accionarDB(){  // crear documentos con ID's = array myFavs
+                
+                this.myFavs.forEach(crearDocs => {
+                 let argumento = firebase.auth().currentUser.uid
+                 console.log(argumento)
+                 console.log(crearDocs)
+                 firebase.firestore().collection(argumento).doc(crearDocs).set({ gameFav : true });
+                });
+        },
+         revisarDB(){  // trae todos los documentos (ID juegos) y sus propiedades (siempre son fav true en este caso)
+            let argumento = firebase.auth().currentUser.uid 
+            firebase.firestore().collection(argumento).get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            });
+            });
+        },
     }
 })
