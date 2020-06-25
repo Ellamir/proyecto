@@ -1,22 +1,23 @@
 <template>
     <div class="container">
-        <b-carousel
-            id="carousel-1"
-            v-model="slide"
-            :interval="4000"
-            img-width="1024"
-            img-height="480"
-            style="text-shadow: 1px 1px 2px #333;"
-            @sliding-start="onSlideStart"
-            @sliding-end="onSlideEnd"
-        >
-        <!-- Text slides with image -->
-            <b-carousel-slide
-                :img-src="showHeroIMG"
-                class="heroSlide"
-            >
-            </b-carousel-slide>
-        </b-carousel>
+      <b-carousel
+        id="carousel-1"
+        v-model="slide"
+        :interval="4000"
+        img-width="1024"
+        img-height="480"
+        style="text-shadow: 1px 1px 2px #333;"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
+      >
+        <b-carousel-slide
+          caption-html="Ludoteca"
+          text="Nulla vitae elit libero, a pharetra augue mollis interdum."
+          img-src="https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1559254898769-61I1Qnnt-UL.jpg"
+          class="heroSlide"
+          caption-tag="h1">  
+        </b-carousel-slide>
+      </b-carousel>
     </div>
 </template>
 
@@ -27,8 +28,8 @@ export default {
     name: 'Hero',
     data() {
       return {
-        randomGame: {},
         slide: 0,
+
       }
     },
     methods: {
@@ -43,11 +44,10 @@ export default {
     },
     computed: {
         ...mapGetters([
-          'showHeroIMG'
+          'showHero'
         ])
     },
     beforeMount: function () {
-      console.log('la imagen',this.showHeroIMG)
       this.$store.dispatch('callDataToHero');
 
     }
@@ -57,7 +57,9 @@ export default {
 <style lang="scss" scoped>
 .heroSlide {
   margin: 5vh 0;
-  height: 45vh;
+  height: 60vh;
 }
-
+.carousel-caption {
+  color: #38006b !important;
+}
 </style>

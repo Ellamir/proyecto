@@ -109,6 +109,8 @@ export default {
   }
 }
 
-.mayusculas { text-transform: capitalize; }
+.mayusculas { 
+  text-transform: capitalize; 
+}
 
 </style> 
