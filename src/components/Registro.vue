@@ -9,7 +9,7 @@
         {{userOk}}
       </div>
       <div class="alert alert-danger mx-auto" style="width: 350px;" role="alert" v-else-if="error">
-        Se ha producido un error. {{error}}
+        {{error}}
       </div>
     <div class="mx-auto" v-else style="width: 330px;"><h1>Sign up for more!</h1></div>
     </b-form-row>
@@ -149,10 +149,11 @@ export default {
                             this.userOk = '';
                             this.error = '';
                             this.$router.push('/profile');  //pasa directo a perfil
-                          },2000);
-                        
+                          },1000);
                     })
                }).catch(error => console.error(error))
+                alert("Usuario ya registrado");
+               // this.error = 'Usuario ya registrado. Accede a tu perfil';
               }
              
             }else{

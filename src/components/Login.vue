@@ -70,6 +70,7 @@ export default {
           console.error(error);
           if (error.code == 'auth/user-not-found'){
             alert("El usuario no existe en nuestra base de datos");
+            this.$router.push('/signup');
           }else if(error.code == 'auth/invalid-email'){
             alert("Ingrese un correo valido");
             

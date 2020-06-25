@@ -33,7 +33,8 @@ export default {
     },
     data() {
         return { 
-            gravatarURL: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp',  //fantasma default
+            gravatarURL: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp',  
+            //fantasma default
             hola: '',
             foto: '',
             Uri: '',
@@ -52,34 +53,21 @@ export default {
     mounted() {
         if (this.$store.state.uidUser) {
             var user = firebase.auth().currentUser;
-            //var name, email, photoUrl, uid, Uri;
             if (user != null) {
-                this.name = user.displayName;
-                this.email = user.email;
-                this.Uri = user.photoURL;
-                this.clave = user.password;
-                //  emailVerified = user.emailVerified;
-                this.photoURL = user.photoURL;  
-            }
-            /*  Definir si esto hace algo relevante. Si no, borrar!!!!!                  
-            db.collection(this.$store.state.uidUser).get().then(resp=>{
-                var aux = [];
-                resp.forEach(elemt=>{
-                    aux.push({
-                    id: elemt.data().id,
-                    last_name: elemt.data().last_name,
-                    first_name: elemt.data().first_name,
-                    avatar: elemt.data().avatar,
-                    email: elemt.data().email,
-                    idDoc: elemt.id,
-                    favorito: elemt.data().favorito
-                    })
-                });
-                this.datosFavoritos = aux;})  */            
-        } else {
+            this.name = user.displayName;
+            this.email = user.email;
+            this.Uri = user.photoURL;
+            this.clave = user.password;
+            //  emailVerified = user.emailVerified;
+            this.photoURL = user.photoURL;  
+            }            
+        }else{
             this.$router.push('/access');
         }
-  },
+    },
+
+    
+    
     methods: {
         saludo(){
             var user = firebase.auth().currentUser;
@@ -94,22 +82,8 @@ export default {
             let foto = (user.photoURL) 
             this.foto = foto
             this.hola="Hola "+nombre;
-        }
-    },
-        /*  Definir si esto hace algo, si no, borrar!!!!!
-        filters:{
-            upper(str){
-            str = str.toLowerCase().split(' ');
-
-            let final = [ ];
-
-                for(let  word of str){
-                final.push(word.charAt(0).toUpperCase()+ word.slice(1));
-                }
-
-            return final.join(' ')      
             }
-        }, */    
+    },
 }
 </script>
 

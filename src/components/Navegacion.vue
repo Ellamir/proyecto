@@ -29,27 +29,24 @@
           </b-nav-form>
         </b-navbar-nav>
 
-        <b-navbar-nav v-if="$store.state.uidUser">  <!-- Links de navegación para usuarios registrados -->
-          <b-nav-item href="#">
-            <router-link class="nav-link" to="/profile">
-              <b-avatar :src="$store.state.uidUser.photoURL" />
-            </router-link>
-          </b-nav-item>
-          <b-nav-item href="#">
-            <li class="nav-link" @click="salida" to="/">Logout</li>
-          </b-nav-item> 
-        </b-navbar-nav>
+<b-navbar-nav v-if="$store.state.uidUser">  <!-- Links de navegación para usuarios registrados -->
+        
+        <b-nav-item href="#"><router-link class="mayusculas nav-link" to="/profile">{{ authName }}</router-link></b-nav-item>
+        <b-nav-item href="#"><li class="nav-link" @click="salida" to="/">Logout</li></b-nav-item> 
+        <b-nav-item href="#"><router-link class="nav-link" to="/profile">
+        <b-avatar :src="$store.state.uidUser.photoURL" />
+        </router-link></b-nav-item>
+        
+      </b-navbar-nav>
 
-        <b-navbar-nav v-else>  <!-- Links de navegación están TODOS y en orden secuencial por ahora -->
-          <b-nav-item href="#">
-              <router-link class="nav-link" to="/signup">Sign Up!</router-link>
-          </b-nav-item>
-          <b-nav-item href="#">
-            <router-link class="nav-link" to="/access">
-              <b-avatar :src="$store.state.uidUser.photoURL" />
-            </router-link>
-          </b-nav-item>
-        </b-navbar-nav>
+      <b-navbar-nav v-else>  <!-- Links de navegación están TODOS y en orden secuencial por ahora -->
+        <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/access">Access</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/access">
+        <b-avatar :src="authPic" /></router-link></b-nav-item>
+       
+      </b-navbar-nav>
+      
       </b-collapse>
     </b-navbar>
   </div>
@@ -61,6 +58,20 @@ import { mapActions } from 'vuex';
 
 export default {
   name: 'Navegacion',
+
+    computed: {
+    authPic() {
+      return this.$store.state.uidUser.photoURL;
+    },
+    authName() {
+      return this.$store.state.uidUser.displayName;
+    },
+  },
+
+
+
+
+
   data() {
     return {
       searchInput: '',
@@ -101,4 +112,7 @@ export default {
     }
   }
 }
+
+.mayusculas { text-transform: capitalize; }
+
 </style> 

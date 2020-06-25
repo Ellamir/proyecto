@@ -1,6 +1,6 @@
 <template>
     <b-container>
-        <h2>My Library</h2>
+        <h2>My Game Collection</h2>
         <div class="cuadroNaranjo"></div>
         <b-card-group deck>
             <b-card v-for="(item, index) in currPageFavs" :key="index"

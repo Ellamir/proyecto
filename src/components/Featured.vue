@@ -12,7 +12,12 @@
                 <b-card-text>
                 Publisher: {{ item.publisher }}, {{ item.year_published }} 
                 </b-card-text>
-                <b-button @click="callFavorites(item.id)">Add to Favorites</b-button>
+                <!-- sacale el template si no los quieres bajar -->
+                <template v-slot:footer > 
+                    <div align="center">
+                    <b-button @click="callFavorites(item.id)" class="boton1">Add to Favorites</b-button>
+                    </div>
+                </template>
             </b-card>
         </b-card-group> 
     </div>
@@ -58,5 +63,13 @@ h2 {
         background: #EC8E4C;
     }
 }
-
+.boton1 {
+    color:#FFF;
+    background:#FFA040;
+    }
+    .boton1:hover {
+    color:#FFF;
+    background:#EC8E4C;
+    
+    }
 </style>
