@@ -3,12 +3,17 @@
         <h2>My Game Collection</h2>
         <div class="cuadroNaranjo"></div>
         <b-card-group deck>
-            <b-card v-for="(item, index) in currPageFavs" :key="index"
-                :title="item.name"
-                :img-src="item.images.small"
-                :img-alt="item.name"
+            <b-card v-for="(item, index) in currPageFavs" 
+                :key="index"
                 img-top
             >
+                <b-card-img
+                    :src="item.images.small"
+                    :alt="item.name"
+                    
+                ></b-card-img>
+                <b-card-title 
+                    :title="item.name"></b-card-title>
                 <b-card-text>
                 Publisher: {{ item.publisher }}, {{ item.year_published }} 
                 </b-card-text>
@@ -87,7 +92,7 @@ export default {
 
             return this.favs.slice(start, end);
         },
-  },
+},
 }
 </script>
 
@@ -106,5 +111,13 @@ h2 {
         max-width: 55px;
         background: #EC8E4C;
     }
+}
+.card-body {
+    max-width: 250px;
+}
+.card-img {
+    max-height: 150px !important;
+    width: auto !important;
+    margin-bottom: 15%;
 }
 </style>

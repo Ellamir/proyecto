@@ -78,7 +78,7 @@ export default {
       firebase.auth().signOut().then(
         () => {
           // console.log("salida de usuario")
-          this.$router.push('/home');
+          this.$router.push('/');
         }
       )
     },
