@@ -22,9 +22,9 @@ export default new Vuex.Store({
             searchResults: [],
     },
     getters: {
-        showHeroIMG(state) 
+        showHero(state) 
         {
-            return state.randomHero.images.original
+            return state.randomHero
         },
         showFeature(state)
         {

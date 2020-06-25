@@ -20,7 +20,7 @@
                 <!-- sacale el template si no los quieres bajar -->
                 <template v-slot:footer > 
                     <div align="center">
-                    <b-button @click="callFavorites(item.id)" class="boton1">Add to Favorites</b-button>
+                    <b-button @click="callFavorites(item.id)" class="boton1">Add to My Library</b-button>
                     </div>
                 </template>
             </b-card>
