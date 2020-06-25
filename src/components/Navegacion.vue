@@ -28,17 +28,19 @@
 
       <b-navbar-nav v-if="$store.state.uidUser">  <!-- Links de navegación para usuarios registrados -->
         
+        <b-nav-item href="#"><router-link class="mayusculas nav-link" to="/profile">{{ authName }}</router-link></b-nav-item>
+        <b-nav-item href="#"><li class="nav-link" @click="salida" to="/">Logout</li></b-nav-item> 
         <b-nav-item href="#"><router-link class="nav-link" to="/profile">
         <b-avatar :src="$store.state.uidUser.photoURL" />
         </router-link></b-nav-item>
-        <b-nav-item href="#"><li class="nav-link" @click="salida" to="/">Logout</li></b-nav-item> 
         <!-- <b-nav-item href="#"><li class="nav-link" to="/tam">Tam</li></b-nav-item>  -->
       </b-navbar-nav>
 
       <b-navbar-nav v-else>  <!-- Links de navegación están TODOS y en orden secuencial por ahora -->
         <b-nav-item href="#"><router-link class="nav-link" to="/signup">Sign Up!</router-link></b-nav-item>
+        <b-nav-item href="#"><router-link class="nav-link" to="/access">Access</router-link></b-nav-item>
         <b-nav-item href="#"><router-link class="nav-link" to="/access">
-        <b-avatar :src="$store.state.uidUser.photoURL" /></router-link></b-nav-item>
+        <b-avatar :src="authPic" /></router-link></b-nav-item>
        
       </b-navbar-nav>
 
@@ -56,20 +58,14 @@ import firebase from 'firebase';
 export default {
   name: 'Navegacion',
 
-    // computed: {
-    // authState() {
-      /*
-        store: {
-          auth: {
-            name: '',
-            email: '',
-            authenticated: false,
-          }
-        }
-      }
-      */
-    //   return this.$store.auth.authenticated;
-    // },
+    computed: {
+    authPic() {
+      return this.$store.state.uidUser.photoURL;
+    },
+    authName() {
+      return this.$store.state.uidUser.displayName;
+    },
+  },
 
 
 
@@ -104,4 +100,7 @@ export default {
 .oscuro{
         background-color: #38006b;
 }
+
+.mayusculas { text-transform: capitalize; }
+
 </style> 

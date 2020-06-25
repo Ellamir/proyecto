@@ -1,6 +1,6 @@
 <template>
- <div>
- 
+<div>
+
     <div class="container my-5">
         <h2>User Profile</h2>
         <div class="cuadroNaranjo"></div>
@@ -16,12 +16,11 @@
                 <b-button @click="revisarDB" my-5 mx-auto class="center boton1">My game collection</b-button>
             </div>
                 
-     
         </b-card>
         
     </div>
 
- </div>
+</div>
 </template>
 
 <script>
@@ -34,17 +33,15 @@ export default {
     
     name: 'Usercard',
     components: {
-       
+    
     },
     computed: {
     myFavs() {
-      return this.$store.state.myFavs;
-      
+    return this.$store.state.myFavs;
+    
     },
     },
     methods: {
-
-
         
         ...mapActions([
             'accionarDB',
@@ -65,14 +62,14 @@ export default {
             photoUrl: '', 
             uid: '',
             clave: '',
+            toggle: false,
             }
     },
 
 
     beforeMount() {
-      if (this.$store.state.uidUser) {
-          var user = firebase.auth().currentUser;
-          
+    if (this.$store.state.uidUser) {
+        var user = firebase.auth().currentUser;
             if (user != null) {
             this.name = user.displayName;
             this.email = user.email;
@@ -87,11 +84,6 @@ export default {
                 this.$router.push('/access');
             }
     },
-
-    
-    
-    
-    
 }
 
 </script>
@@ -122,7 +114,9 @@ h2 {
     .boton1:hover {
     color:#FFF;
     background:#EC8E4C;
-    
+    }
+    .boton1:click{
+    background:#FFA040;
     }
 .center {
     text-align: center;

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-//import firebase from 'firebase';   cuando le active la opcion o sino habra q reemplazar por vuex para usar state
+import firebase from 'firebase';   
 
 Vue.use(VueRouter)
 
@@ -14,44 +14,52 @@ Vue.use(VueRouter)
   {
     path: '/access',
     name: 'Access',
-    component: () => import('../views/Access.vue')
+    component: () => import('../views/Access.vue'),
+    meta: {
+      login: false
+    }
   },
   {
     path: '/signup',
     name: 'Signup',
-    component: () => import('../views/Signup.vue')
+    component: () => import('../views/Signup.vue'),
+    meta: {
+      login: false
+    }
   },
   {
    path: '/ana',
     name: 'Ana',
-    component: () => import('../views/Ana.vue')
+    component: () => import('../views/Ana.vue'),
   },
-  {
-    path: '/tam',
-    name: 'Tam',
-    component: () => import('../views/Tam.vue'),
-  },
-
   {
     path: '/profile',
     name: 'Profile',
     component: () => import('../views/Profile.vue'),
+    meta: {
+      login: true
+    }
   },
-
-  //  {                               Así deberia ser el flujo al apretar el perfil de usuario pero no funca
-  //   path: '/perfil',
-  //    component: () => import('../views/Perfil.vue'),
-  //    beforeEnter: (to, from, next) => {
-  //     if (firebase.auth().currentUser) next({ name: 'Perfil' })
-  //     else next({ name: 'Access' })
-  //    }
-  //  },
 ]
+
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
+
+
+router.beforeEach((to, from, next) => {
+  let user = firebase.auth().currentUser;
+
+  let authRequired = to.matched.some(route => route.meta.login);
+
+  if (!user && authRequired) {
+    next('access');
+  } else {
+    next();
+  }
+});
 
 export default router

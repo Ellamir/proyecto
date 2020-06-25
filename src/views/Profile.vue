@@ -63,10 +63,8 @@ export default {
     },
 
     mounted() {
-      if (this.$store.state.uidUser) {
-          var user = firebase.auth().currentUser;
-          //var name, email, photoUrl, uid, Uri;
-
+        if (this.$store.state.uidUser) {
+            var user = firebase.auth().currentUser;
             if (user != null) {
             this.name = user.displayName;
             this.email = user.email;
@@ -74,30 +72,11 @@ export default {
             this.clave = user.password;
             //  emailVerified = user.emailVerified;
             this.photoURL = user.photoURL;  
-            }
-
-
-
-
-
-                    //   db.collection(this.$store.state.uidUser).get().then(resp=>{
-                    //       var aux = [];
-                    //       resp.forEach(elemt=>{
-                    //           aux.push({
-                    //             id: elemt.data().id,
-                    //             last_name: elemt.data().last_name,
-                    //             first_name: elemt.data().first_name,
-                    //             avatar: elemt.data().avatar,
-                    //             email: elemt.data().email,
-                    //             idDoc: elemt.id,
-                    //             favorito: elemt.data().favorito
-                    //           })
-                    //       });
-                    //       this.datosFavoritos = aux;})
-            }else{
-                this.$router.push('/access');
-            }
-  },
+            }            
+        }else{
+            this.$router.push('/access');
+        }
+    },
 
     
     
@@ -111,32 +90,12 @@ export default {
             console.log('email en md5',gravatar);
             let URL = "https://secure.gravatar.com/avatar/"+gravatar+"?s=200&d=mp";
             this.gravatarURL=URL;
-            let nombre = (user.displayName)  // capitalizar nombre depende de CSS o arreglar el input
+            let nombre = (user.displayName)  // capitalizar nombre depende de CSS
             let foto = (user.photoURL) 
             this.foto = foto
             this.hola="Hola "+nombre;
             }
- 
     },
-    
-    //     filters:{
-    //  upper(str){
-    //    str = str.toLowerCase().split(' ');
-
-    //    let final = [ ];
-
-    //     for(let  word of str){
-    //       final.push(word.charAt(0).toUpperCase()+ word.slice(1));
-    //     }
-
-    //   return final.join(' ')      
-    //     }
-    //   },
-        
-
-
-
-    
 }
 
 </script>
@@ -149,7 +108,7 @@ export default {
         
 }
 .mejorlogin {
-          text-decoration-color: #FFF;
+        text-decoration-color: #FFF;
         }
 
 .mayusculas { text-transform: capitalize; }
