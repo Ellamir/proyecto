@@ -18,7 +18,8 @@ export default new Vuex.Store({
             randomFeature: [],
             featuredQuantity: 4,
             popularToday:{},
-            myFavs:[]
+            myFavs:[],
+            searchResults: [],
     },
     getters: {
         showHeroIMG(state) 
@@ -43,6 +44,10 @@ export default new Vuex.Store({
             {
                 return state.myFavs.includes(gameID);
             }
+        },
+        showSearch(state)
+        {
+            return state.searchResults;
         }
     },
     mutations: {
@@ -66,11 +71,21 @@ export default new Vuex.Store({
         {
             state.myFavs.push(gameID);
         },
-        agregandoId(state,idRecibido){
-          state.uidUser = idRecibido;
+        agregandoId(state,idRecibido)
+        {
+            state.uidUser = idRecibido;
         },
-        pasandoFavs(state, favArray){
+        pasandoFavs(state, favArray)
+        {
             state.myFavs = favArray;
+        },
+        addSearchToStore(state, res)
+        {
+            state.searchResults = res;
+        },
+        clearSearch(state)
+        {
+            state.searchResults = [];
         }
     },
     actions: {
@@ -136,7 +151,7 @@ export default new Vuex.Store({
             }
         },
         idUserLog(context,dataUsuarioRecibido){
-          context.commit('agregandoId',dataUsuarioRecibido);
+            context.commit('agregandoId',dataUsuarioRecibido);
         },
         
         bringFavorites(context, gameIDs)
@@ -154,13 +169,7 @@ export default new Vuex.Store({
 
             return apiRes();
         },
-         revisarDB(context){  
-            let firebaseAuth = firebase.auth();
-            console.log('El firebase auth', firebaseAuth);
-
-            let currentUser = this.state.uidUser;
-            console.log('El current user', currentUser);
-
+        revisarDB(context){  
             let uID = firebase.auth().currentUser.uid   // documento corresponde al ID del usuario
             console.log('El uID',uID)
 
@@ -171,11 +180,33 @@ export default new Vuex.Store({
 
                     querySnapshot.forEach(function(doc) {
                         favArray.push(doc.id)
-                    // favArray es el que debe pasar a myFavs
+                        // favArray es el que debe pasar a myFavs
                     });
 
                     context.commit("pasandoFavs", favArray)
-                });
+            });
+        },
+        apiSearch(context, search){
+            context.commit('clearSearch');
+
+            if(search != '') 
+            {
+                let searched = `name=${search}`;
+    
+                const apiRes = async () => {
+                    const getSearch = await (
+                        await apiCall(searched)
+                    ).data.games;
+                    console.log('Esto es getSearch',getSearch)
+                    context.commit('addSearchToStore', getSearch);
+                }
+
+                apiRes();
+            }
+            else
+            {
+                console.log('La consulta está vacía')
+            }
         }
     }
 })
