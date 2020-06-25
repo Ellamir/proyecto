@@ -24,13 +24,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .morado{
-        background-color: #6a1b9a;
-        text-decoration-color: #FFF;
+    background-color: #6a1b9a;
+    text-decoration-color: #FFF;
         
 }
 .mejorlogin {
-        text-decoration-color: #FFF;
-        }
+    text-decoration-color: #FFF;
+}
 </style> 

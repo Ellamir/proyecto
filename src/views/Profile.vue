@@ -1,25 +1,17 @@
 <template>
     <div>
-
         <b-container class="bv-example-row" fluid="md">
-
-  <b-row>
-    <b-col lg="4">
-        <usercard></usercard>
-    </b-col>
-    <b-col lg="8">
-        <popular-today></popular-today>
-    </b-col>
-  </b-row>
-
+            <b-row>
+                <b-col lg="4">
+                    <usercard></usercard>
+                </b-col>
+                <b-col lg="8">
+                    <popular-today></popular-today>
+                </b-col>
+            </b-row>
         </b-container>
-
         <my-games :ids="this.showFavs"></my-games>
-
-
     </div>
-    
-
 </template>
 
 <script>
@@ -33,18 +25,16 @@ import { mapGetters } from 'vuex';
 
 
 export default {
-    
     name: 'Profile',
     components: {
         PopularToday,
         Usercard,
         MyGames
     },
-
     data() {
-            return {
-            //gravatarURL: 'https://es.gravatar.com/avatar/HASH-STRING?s=200&d=mp'   
-            gravatarURL: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp',  //fantasma default
+        return { 
+            gravatarURL: 'https://www.gravatar.com/avatar/00000000000000000000000000000000?s=200&d=mp',  
+            //fantasma default
             hola: '',
             foto: '',
             Uri: '',
@@ -53,15 +43,13 @@ export default {
             photoUrl: '', 
             uid: '',
             clave: '',
-            }
+        }
     },
-
     computed: {
         ...mapGetters([
             'showFavs'
         ])
     },
-
     mounted() {
         if (this.$store.state.uidUser) {
             var user = firebase.auth().currentUser;
@@ -81,13 +69,13 @@ export default {
     
     
     methods: {
-    saludo(){
+        saludo(){
             var user = firebase.auth().currentUser;
-            console.log('desde Firebase:',user.displayName);
+            /* console.log('desde Firebase:',user.displayName);
             console.log('desde Firebase:',user.photoURL);
-            console.log(user.email);
+            console.log(user.email); */
             var gravatar = md5(user.email);
-            console.log('email en md5',gravatar);
+            // console.log('email en md5',gravatar);
             let URL = "https://secure.gravatar.com/avatar/"+gravatar+"?s=200&d=mp";
             this.gravatarURL=URL;
             let nombre = (user.displayName)  // capitalizar nombre depende de CSS
@@ -97,24 +85,22 @@ export default {
             }
     },
 }
-
 </script>
 
 <style lang="scss" scoped>
-
 .morado{
-        background-color: #6a1b9a;
-        text-decoration-color: #FFF;
+    background-color: #6a1b9a;
+    text-decoration-color: #FFF;
         
 }
 .mejorlogin {
-        text-decoration-color: #FFF;
-        }
-
-.mayusculas { text-transform: capitalize; }
-
+    text-decoration-color: #FFF;
+}
+.mayusculas { 
+    text-transform: capitalize; 
+}
 .small{
-        color: #38006b;
-        font-size: 13px;
+    color: #38006b;
+    font-size: 13px;
 }
 </style> 
