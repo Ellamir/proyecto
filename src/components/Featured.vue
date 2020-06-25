@@ -3,12 +3,17 @@
         <h2>Featured</h2>
         <div class="cuadroNaranjo"></div>
         <b-card-group deck>
-            <b-card v-for="(item, index) in gameArray" :key="index"
-                :title="item.name"
-                :img-src="item.images.small"
-                :img-alt="item.name"
+            <b-card v-for="(item, index) in gameArray" 
+                :key="index"
                 img-top
             >
+                <b-card-img
+                    :src="item.images.small"
+                    :alt="item.name"
+                    
+                ></b-card-img>
+                <b-card-title 
+                    :title="item.name"></b-card-title>
                 <b-card-text>
                 Publisher: {{ item.publisher }}, {{ item.year_published }} 
                 </b-card-text>
@@ -66,10 +71,18 @@ h2 {
 .boton1 {
     color:#FFF;
     background:#FFA040;
+
+    &:hover {
+        color:#FFF;
+        background:#EC8E4C;
     }
-    .boton1:hover {
-    color:#FFF;
-    background:#EC8E4C;
-    
-    }
+}
+.card-body {
+    max-width: 250px;
+}
+
+.card-img {
+    max-height: 150px !important;
+    width: auto !important;
+}
 </style>
