@@ -14,7 +14,7 @@
                 ></b-card-img>
                 <b-card-title 
                     :title="item.name"></b-card-title>
-                <b-card-text>
+                <b-card-text muted>
                 Publisher: {{ item.publisher }}, {{ item.year_published }} 
                 </b-card-text>
             </b-card>
@@ -120,4 +120,12 @@ h2 {
     width: auto !important;
     margin-bottom: 15%;
 }
+div.card-body {
+text-align: center;
+}
+.card-title {
+padding-top: 30px;
+margin-top:30px;
+} 
+
 </style>

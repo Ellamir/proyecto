@@ -84,5 +84,15 @@ h2 {
 .card-img {
     max-height: 150px !important;
     width: auto !important;
+    
+}
+
+div.card-body {
+text-align: center;
+}
+
+.card-title {
+padding-top: 30px;
+margin-top:30px;
 }
 </style>
