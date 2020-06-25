@@ -84,8 +84,9 @@ export default {
     },
     search(query) 
     {
-      this.$router.push(`/search-results?q=${query}`);
-      this.$router.go();
+      this.$router.push(`/search-results?q=${query}`, () => {
+        this.$router.go();
+      });
     },
     ...mapActions([
       'apiSearch'
