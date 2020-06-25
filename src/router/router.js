@@ -22,7 +22,7 @@ Vue.use(VueRouter)
     component: () => import('../views/Signup.vue')
   },
   {
-   path: '/ana',
+    path: '/ana',
     name: 'Ana',
     component: () => import('../views/Ana.vue')
   },
@@ -31,7 +31,11 @@ Vue.use(VueRouter)
     name: 'Tam',
     component: () => import('../views/Tam.vue'),
   },
-
+  {
+    path: '/search-results',
+    name: 'SearchResults',
+    component: () => import('../views/SearchResults.vue'),
+  },
   {
     path: '/profile',
     name: 'Profile',
