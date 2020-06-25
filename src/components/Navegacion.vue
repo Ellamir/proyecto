@@ -13,9 +13,7 @@
         <!-- center aligned nav items -->
         <b-navbar-nav class="mx-auto">
           <b-nav-form>
-       <b-input-group size="sm" class="mb-2">
-     
-      <b-form-input 
+            <b-form-input 
               size="md" 
               class="" 
               placeholder="¿Buscas un juego?"
@@ -31,7 +29,7 @@
           </b-nav-form>
         </b-navbar-nav>
 
-      <b-navbar-nav v-if="$store.state.uidUser">  <!-- Links de navegación para usuarios registrados -->
+<b-navbar-nav v-if="$store.state.uidUser">  <!-- Links de navegación para usuarios registrados -->
         
         <b-nav-item href="#"><router-link class="mayusculas nav-link" to="/profile">{{ authName }}</router-link></b-nav-item>
         <b-nav-item href="#"><li class="nav-link" @click="salida" to="/">Logout</li></b-nav-item> 
@@ -48,12 +46,10 @@
         <b-avatar :src="authPic" /></router-link></b-nav-item>
        
       </b-navbar-nav>
-
       
-
-    </b-collapse>
-  </b-navbar>
-</div>
+      </b-collapse>
+    </b-navbar>
+  </div>
 </template>
 
 <script>
