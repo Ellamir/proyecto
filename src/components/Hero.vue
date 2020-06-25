@@ -13,7 +13,7 @@
         <b-carousel-slide
           caption-html="Ludoteca"
           text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-          img-src="https://d2k4q26owzy373.cloudfront.net/700x700/games/uploaded/1559254898769-61I1Qnnt-UL.jpg"
+          img-src="http://jdr.cl/assets/img-temp/1920x1080/img4.jpg"
           class="heroSlide"
           caption-tag="h1">  
         </b-carousel-slide>
