@@ -44,7 +44,7 @@
         <b-nav-item href="#"><router-link class="nav-link" to="/access">Access</router-link></b-nav-item>
         <b-nav-item href="#"><router-link class="nav-link" to="/access">
         <b-avatar :src="authPic" /></router-link></b-nav-item>
-       
+        
       </b-navbar-nav>
       
       </b-collapse>
@@ -67,11 +67,6 @@ export default {
       return this.$store.state.uidUser.displayName;
     },
   },
-
-
-
-
-
   data() {
     return {
       searchInput: '',
@@ -89,7 +84,8 @@ export default {
     },
     search(query) 
     {
-      this.$router.push(`/search-results?q=${query}`)
+      this.$router.push(`/search-results?q=${query}`);
+      this.$router.go();
     },
     ...mapActions([
       'apiSearch'
