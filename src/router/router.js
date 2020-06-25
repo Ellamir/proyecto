@@ -28,9 +28,14 @@ Vue.use(VueRouter)
     }
   },
   {
-   path: '/ana',
+    path: '/ana',
     name: 'Ana',
     component: () => import('../views/Ana.vue'),
+  },
+  {
+    path: '/search-results',
+    name: 'SearchResults',
+    component: () => import('../views/SearchResults.vue'),
   },
   {
     path: '/profile',
