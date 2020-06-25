@@ -1,4 +1,4 @@
-# Ludoteca
+# LUDOTECA (Biblioteca de juegos de tablero)
 
 El objetivo de este sitio es generar una biblioteca de los juegos que posee cada usuario registrado.
 Los usuarios pueden agregar juegos a su biblioteca, la que extrae información de una API remota con detalles de cada juego. 
@@ -20,30 +20,32 @@ Los usuarios pueden agregar juegos a su biblioteca, la que extrae información d
   - [x]   2. Se debe utilizar VueJS, Vuex y Vue router para el desarrollo
   - [x]   3. Utilizar una librería de componentes (Bootstrap-Vue)
   - [x]   4. Utilizar GIT para el control de versiones
-   - [ ]  5. La aplicación deberá obtener los datos de los juegos desde la api 
-        https://boardgamegeek.com/wiki/page/BGG_XML_API2# utilizando Fetch.
+   - [x]  5. La aplicación deberá obtener los datos de los juegos desde la api 
+        https://www.boardgameatlas.com/api/docs utilizando Axios.
    - [x]  6. La aplicación debe contar con un sistema de login basado en el servicio de 
     autenticación de Firebase
-   - [ ]  7. El usuario deberá poder guardar la lista de juegos que marque para guardar
+   - [x]  7. El usuario deberá poder guardar la lista de juegos que marque para guardar
         en una base de datos de Firebase y recuperarlos
-  - [ ]   8. La aplicación debe contar obligatoriamente, con las siguientes vistas:
-       - [ ]  8.a Pantalla de inicio sin login (Presentación y resumen, incluyendo cuántos 
+  - [x]   8. La aplicación debe contar obligatoriamente, con las siguientes vistas:
+       - [x]  8.a Pantalla de inicio sin login (Presentación y resumen, incluyendo cuántos 
         juegos hay en la biblioteca y cuántos usuarios registrados)
        - [x]  8.b. Pantalla de Login
       - [x]   8.c Pantalla Principal que muestre los datos obtenidos de la API
-      - [ ]   8.d Pantalla que muestre la lista personal de juegos. (Firebase)
+      - [x]   8.d Pantalla que muestre la lista personal de juegos. (Firebase)
   - [ ]   9. Se debe poder filtrar por nombre/editorial o palabras clave
   - [ ]   10. Mostrar las imágenes como libros en una repisa y al hacer click traer la info.
      
      
 ## Borrador
 
-![Borrador](https://www.dragon.cl/borrador.png)
+![Borrador](http://dragon.cl/portafolio/ludoteca/borrador.png)
 
 ## Diseño Preliminar
 
 ![Home](http://dragon.cl/portafolio/ludoteca/index.png)
+
 ![Profile](http://dragon.cl/portafolio/ludoteca/profile.png)
+
 ![Artboard](http://dragon.cl/portafolio/ludoteca/artboard.png)
 
 ## Utilidad
@@ -61,7 +63,7 @@ USUARIOS
 - nombre
 - Nick
 - Imagen (avatar)
-- ~~Edad (Fecha de nacimiento - debe haber un calculo para esto)~~
+- ~~Edad (Fecha de nacimiento)~~
 - ~~Grupo~~ 
 - Contacto (email)
 

@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+/src/config/
+
 
 # local env files
 .env.local
@@ -22,3 +24,8 @@ pnpm-debug.log*
 *.sw?
 Ludoteca
 src/config/firebaseConfig.js
+
+src/components/Prueba.vue
+src/store/prueba.js
+src/store/prueba.js
+src/config/conexionApi.js
