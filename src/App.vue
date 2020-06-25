@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style lang="scss">
-
-
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+* {
+  font-family: 'Exo 2', sans-serif;
+}
 </style>
